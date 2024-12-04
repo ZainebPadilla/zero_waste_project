@@ -1,26 +1,21 @@
-<h1>Productions#new</h1>
-<p>Find me in app/views/productions/new.html.erb</p>
-
+<h1>Créer une nouvelle Production</h1>
 
 <%= form_with model: @production, local: true do |form| %>
   <div>
     <%= form.label :process_name, "Nom du Processus" %>
-    <%= form.text_field :process_name, placeholder: "Ex: recette de cuisine" %>
+    <%= form.text_field :process_name %>
   </div>
 
-  <div>
-    <%= form.label :quantity_used, "Quantité utilisée (kg)" %>
-    <%= form.number_field :quantity_used, step: 0.01, placeholder: "Ex: 100.0" %>
-  </div>
-
-  <div>
-    <%= form.label :raw_material_id, "Matière Première" %>
-    <%= form.collection_select :raw_material_id, @raw_materials, :id, :name, prompt: "Sélectionnez une matière première" %>
-  </div>
+  <h2>Matières Premières</h2>
+  <% @raw_materials.each do |raw_material| %>
+    <div>
+      <%= hidden_field_tag "production[raw_materials][#{raw_material.id}][raw_material_id]", raw_material.id %>
+      <%= label_tag "production[raw_materials][#{raw_material.id}][quantity_used]", raw_material.name %>
+      <%= number_field_tag "production[raw_materials][#{raw_material.id}][quantity_used]", nil, step: 0.01, placeholder: "Quantité (kg)" %>
+    </div>
+  <% end %>
 
   <div>
     <%= form.submit "Créer Production", class: "btn btn-primary" %>
   </div>
 <% end %>
-
-<%= link_to "Retour à la liste des productions", productions_path, class: "btn btn-secondary" %>

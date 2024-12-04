@@ -1,9 +1,6 @@
 Rails.application.routes.draw do
-<<<<<<< HEAD
 
-=======
   get "dashboard/index"
->>>>>>> 90643791fa336d637df155d873cfa056c08ee866
   devise_for :users
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

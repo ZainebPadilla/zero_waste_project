@@ -21,17 +21,6 @@
 </head>
 
 <body>
-<<<<<<< HEAD
-  <% if user_signed_in? %>
-  <p>Bonjour, <%= current_user.email %>!</p>
-  <%= button_to 'Déconnexion', destroy_user_session_path, method: :delete %>
-  <% else %>
-  <%= link_to 'Connexion', new_user_session_path %> |
-  <%= link_to 'Inscription', new_user_registration_path %>
-  <% end %>
-
-  <%= yield %>
-=======
   <nav class="navbar navbar-light bg-light">
     <ul class="nav justify-content-center w-100">
       <li class="nav-item">
@@ -65,7 +54,6 @@
   <div class="container mt-4">
     <%= yield %>
   </div>
->>>>>>> 90643791fa336d637df155d873cfa056c08ee866
 </body>
 
 </html>

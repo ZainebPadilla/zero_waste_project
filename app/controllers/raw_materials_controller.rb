@@ -55,4 +55,4 @@ class RawMaterialsController < ApplicationController
         def raw_material_params
           params.require(:raw_material).permit(:name, :description, :quantity, :price)
         end
-      end      
+end      

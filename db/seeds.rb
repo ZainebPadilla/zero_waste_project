@@ -8,7 +8,6 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 
-RawMaterial.destroy_all
 
 RawMaterial.create!([ 
     {name: "Boeuf", co2_per_kg: 27, waste_rate: 0.20},

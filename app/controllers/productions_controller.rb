@@ -9,6 +9,7 @@ class ProductionsController < ApplicationController
   # afficher le formulaire de création d'une production
   def new
     @production = Production.new
+    @raw_materials = RawMaterial.all
   end
 
   def create
@@ -16,6 +17,7 @@ class ProductionsController < ApplicationController
     if @production.save
       redirect_to productions_path, notice: "Production créée avec succès."
     else
+      @raw_materials = RawMaterial.all
       render :new, status: :unprocessable_entity
     end
   end

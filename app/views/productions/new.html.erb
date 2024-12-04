@@ -1,2 +1,26 @@
 <h1>Productions#new</h1>
 <p>Find me in app/views/productions/new.html.erb</p>
+
+
+<%= form_with model: @production, local: true do |form| %>
+  <div>
+    <%= form.label :process_name, "Nom du Processus" %>
+    <%= form.text_field :process_name, placeholder: "Ex: recette de cuisine" %>
+  </div>
+
+  <div>
+    <%= form.label :quantity_used, "Quantité utilisée (kg)" %>
+    <%= form.number_field :quantity_used, step: 0.01, placeholder: "Ex: 100.0" %>
+  </div>
+
+  <div>
+    <%= form.label :raw_material_id, "Matière Première" %>
+    <%= form.collection_select :raw_material_id, @raw_materials, :id, :name, prompt: "Sélectionnez une matière première" %>
+  </div>
+
+  <div>
+    <%= form.submit "Créer Production", class: "btn btn-primary" %>
+  </div>
+<% end %>
+
+<%= link_to "Retour à la liste des productions", productions_path, class: "btn btn-secondary" %>

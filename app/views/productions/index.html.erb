@@ -1,0 +1,26 @@
+<h1>Productions#index</h1>
+<p>Find me in app/views/productions/index.html.erb</p>
+<h1>Liste des Productions enregistrées </h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Processus</th>
+      <th>Matière Première</th>
+      <th>Quantité Utilisée (kg)</th>
+      <th>Quantité Gaspillée (kg)</th>
+      <th>Émissions CO₂ (kg)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @productions.each do |production| %>
+      <tr>
+        <td><%= production.process_name %></td>
+        <td><%= production.raw_material.name %></td>
+        <td><%= production.quantity_used %></td>
+        <td><%= production.quantity_wasted %></td>
+        <td><%= production.co2_emissions %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

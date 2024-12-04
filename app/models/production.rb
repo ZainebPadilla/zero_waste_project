@@ -4,7 +4,7 @@ class Production < ApplicationRecord
 
    # Validations
    validates :process_name, presence: true
-   validates :quantity_used, presence: true, numericality: { greater_than: 0 } #quantité upéreure a zero
+   validates :quantity_used, presence: true, numericality: { greater_than: 0 } #quantité upéreure a zero 
 
 
   def quantity_wasted

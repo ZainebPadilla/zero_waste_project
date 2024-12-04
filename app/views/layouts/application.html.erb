@@ -14,11 +14,14 @@
   <link rel="icon" href="/icon.png" type="image/png">
   <link rel="icon" href="/icon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="/icon.png">
+
   <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
   <%= javascript_importmap_tags %>
+
 </head>
 
 <body>
+<<<<<<< HEAD
   <% if user_signed_in? %>
   <p>Bonjour, <%= current_user.email %>!</p>
   <%= button_to 'Déconnexion', destroy_user_session_path, method: :delete %>
@@ -28,6 +31,41 @@
   <% end %>
 
   <%= yield %>
+=======
+  <nav class="navbar navbar-light bg-light">
+    <ul class="nav justify-content-center w-100">
+      <li class="nav-item">
+        <a class="nav-link active" aria-current="page" href="#">Accueil</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">À propos</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Contact</a>
+      </li>
+
+      <% if user_signed_in? %>
+      <li class="nav-item">
+        <span class="nav-link">Bonjour, <%= current_user.email %>!</span>
+      </li>
+      <li class="nav-item">
+        <%= button_to 'Déconnexion', destroy_user_session_path, method: :delete, class: 'btn btn-link nav-link' %>
+      </li>
+      <% else %>
+      <li class="nav-item">
+        <%= link_to 'Connexion', new_user_session_path, class: 'nav-link' %>
+      </li>
+      <li class="nav-item">
+        <%= link_to 'Inscription', new_user_registration_path, class: 'nav-link' %>
+      </li>
+      <% end %>
+    </ul>
+  </nav>
+
+  <div class="container mt-4">
+    <%= yield %>
+  </div>
+>>>>>>> 90643791fa336d637df155d873cfa056c08ee866
 </body>
 
 </html>

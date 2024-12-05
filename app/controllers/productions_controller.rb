@@ -34,7 +34,7 @@ class ProductionsController < ApplicationController
       redirect_to productions_path, notice: "Production créée avec succès."
     else
       @raw_materials = RawMaterial.all
-      render :new, status: :unprocessable_entity
+      render :new, status: :unprocessable_entity, notice: "remplir les champs manquants"
     end
   end
 
@@ -45,6 +45,8 @@ class ProductionsController < ApplicationController
   end
 
   def destroy
+    @production.destroy
+    redirect_to productions_path, notice: "Production supprimée avec succès."
   end
 
   private

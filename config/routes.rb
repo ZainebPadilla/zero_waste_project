@@ -1,7 +1,13 @@
 Rails.application.routes.draw do
+  get "pages/team"
+  get "pages/contact"
+  
 
-  get "dashboard/index"
+  
+  resources :dashboard, only: [:index]
   devise_for :users
+  
+
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # CRUD pour les productions

@@ -23,17 +23,10 @@
 <body>
 <div class="page-wrapper">
   <nav class="navbar navbar-light bg-light">
-  <div class="container w-100 d-flex justify-content-between align-items-center">
-  <div class="d-flex align-items-center">
-    <%= image_tag "logozerowaste.png", alt: "Logo", class: "navbar-logo" %>
-    <%= link_to 'ZeroWaste', root_path, class: 'navbar-brand ml-2' %>  <!-- Nom de l'application avec marge à gauche -->
-  </div>
-  
-     <div class="mx-auto"> <!-- Utilisation de mx-auto pour centrer le menu -->
-          <ul class="nav justify-content-center">
-          <li class="nav-item">
-            <%= link_to 'Accueil', root_path, class: 'nav-link active', 'aria-current': 'page' %>
-          </li>
+    <ul class="nav justify-content-center w-100">
+      <li class="nav-item">
+        <a class="nav-link active" aria-current="page" href="#">Accueil</a>
+      </li>
       <li class="nav-item">
         <%= link_to 'Team', pages_team_path, class: 'nav-link' %>
       </li>

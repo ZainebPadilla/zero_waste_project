@@ -1,2 +1,24 @@
-<h1>Productions#edit</h1>
-<p>Find me in app/views/productions/edit.html.erb</p>
+<h1>Edit Production</h1>
+
+<%= form_with model: @production, local: true do |form| %>
+  <div class="mb-3">
+    <%= form.label :process_name, "Nom du processus" %>
+    <%= form.text_field :process_name, class: "form-control" %>
+  </div>
+
+  <h2>Matières premières utilisées</h2>
+  <div id="raw-materials">
+    <% @production.production_raw_materials.each do |prm| %>
+      <div class="mb-3">
+        <%= label_tag "raw_material_#{prm.raw_material_id}_quantity", prm.raw_material.name %>
+        <%= number_field_tag "production[raw_materials_attributes][#{prm.id}][quantity_used]", prm.quantity_used, class: "form-control", step: 0.01 %>
+
+      </div>
+    <% end %>
+
+
+  <%= form.submit "Mettre à jour", class: "btn btn-primary" %>
+<% end %>
+
+<%= link_to "Annuler", productions_path, class: "btn btn-secondary" %>
+

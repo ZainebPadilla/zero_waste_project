@@ -2,6 +2,12 @@
 <p>Find me in app/views/productions/index.html.erb</p>
 <h1>Liste des Productions enregistrées </h1>
 
+<% if flash[:notice] %>
+<div class="alert alert-success">
+  <%= flash[:notice] %>
+</div>
+<% end %>
+
 <table>
   <thead>
     <tr>

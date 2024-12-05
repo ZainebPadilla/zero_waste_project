@@ -14,3 +14,65 @@
  *= require_self
  *= require bootstrap.min-4
  */
+
+.page-wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Assure que la page prend toute la hauteur */
+}
+.container{
+    flex: 1;
+}
+.footer{
+    font-family: 'Open Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
+    font-size: 16px;
+    background-color: rgba(238, 238, 238, 1);
+    color: #008cba;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-top: auto; /* Assure qu'il est toujours poussé vers le bas */
+}
+.footer-container{
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+.footer-column h3{
+    font-size: 16px;
+    color: #008cba;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+    margin-left: 32px;
+}
+.footer-column ul{
+    list-style: none;
+    margin-bottom: 5px;
+}
+.footer li{
+    list-style-type: none;
+}
+.footer-column li:hover::before{
+    width: 100%;
+}
+.footer-copyright{
+    display: flex;
+    justify-content: center;
+    border-top: 1px solid #555;
+    padding-top: 8px;
+}
+.footer-column a{
+    color: #008cba;
+    text-decoration: none;
+    font-size: 14px;
+}
+.footer a:hover{
+    color: #658dd9;
+}
+.footer-column{
+    padding: 3px;
+    margin-top: 5px;
+}
+
+
+

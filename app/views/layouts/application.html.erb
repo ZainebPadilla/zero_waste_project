@@ -21,8 +21,11 @@
 </head>
 
 <body>
+<div class="page-wrapper">
   <nav class="navbar navbar-light bg-light">
     <ul class="nav justify-content-center w-100">
+    <%= image_tag "logozerowaste.png", alt: "Logo", class: "footer-logo" %>
+
       <li class="nav-item">
         <a class="nav-link active" aria-current="page" href="#">Accueil</a>
       </li>
@@ -50,9 +53,11 @@
       <% end %>
     </ul>
   </nav>
-
-  <div class="container mt-4">
+    <div class="container mt-4">
     <%= yield %>
+     </div>
+    
+    <%= render 'layouts/footer' %>
   </div>
 </body>
 

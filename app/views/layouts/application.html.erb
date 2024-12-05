@@ -27,12 +27,11 @@
         <%= link_to 'Accueil', root_path, class: 'nav-link active', 'aria-current': 'page' %>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">À propos</a>
+        <%= link_to 'Team', pages_team_path, class: 'nav-link' %>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Contact</a>
+        <%= link_to 'Contact', pages_contact_path, class: 'nav-link' %>
       </li>
-
       <% if user_signed_in? %>
       <li class="nav-item">
         <span class="nav-link">Bonjour, <%= current_user.email %>!</span>

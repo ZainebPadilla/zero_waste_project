@@ -11,7 +11,7 @@
     <div>
       <%= hidden_field_tag "production[raw_materials][#{raw_material.id}][raw_material_id]", raw_material.id %>
       <%= label_tag "production[raw_materials][#{raw_material.id}][quantity_used]", raw_material.name %>
-      <%= number_field_tag "production[raw_materials][#{raw_material.id}][quantity_used]", nil, step: 0.01, placeholder: "Quantité (kg)" %>
+      <%= number_field_tag "production[raw_materials][#{raw_material.id}][quantity_used]", nil, step: 0.01, placeholder: "Quantité (kg)" %> <! -- step: 0.01 permet décimale niveau 2 --> 
     </div>
   <% end %>
 
@@ -19,3 +19,4 @@
     <%= form.submit "Créer Production", class: "btn btn-primary" %>
   </div>
 <% end %>
+

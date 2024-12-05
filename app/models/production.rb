@@ -9,7 +9,7 @@ class Production < ApplicationRecord
  
 
   def quantity_wasted
-    (quantity_used * raw_material.waste_rate).round(2) #2pour dire 2 décimale
+    (quantity_used * raw_material.waste_rate).round(2) #2 for 2 décimal
   end
 
   def co2_emissions

@@ -1,21 +1,29 @@
 <h1>Créer une nouvelle Production</h1>
 
-<%= form_with model: @production, local: true do |form| %>
-  <div>
-    <%= form.label :process_name, "Nom du Processus" %>
-    <%= form.text_field :process_name %>
-  </div>
-
-  <h2>Matières Premières</h2>
-  <% @raw_materials.each do |raw_material| %>
-    <div>
-      <%= hidden_field_tag "production[raw_materials][#{raw_material.id}][raw_material_id]", raw_material.id %>
-      <%= label_tag "production[raw_materials][#{raw_material.id}][quantity_used]", raw_material.name %>
-      <%= number_field_tag "production[raw_materials][#{raw_material.id}][quantity_used]", nil, step: 0.01, placeholder: "Quantité (kg)" %>
-    </div>
+<%= form_with(model: @production, local: true) do |form| %>
+<!-- Afficher les erreurs spécifiques à process_name -->
+<% if @production.errors[:process_name].any? %>
+<div class="alert alert-danger">
+  <% @production.errors[:process_name].each do |error| %>
+  <p><%= error %></p>
   <% end %>
+</div>
+<% end %>
+<div class="form-group">
+  <%= form.label :process_name, "Nom du Processus" %>
+  <%= form.text_field :process_name %>
+</div>
 
-  <div>
-    <%= form.submit "Créer Production", class: "btn btn-primary" %>
-  </div>
+<h2>Matières Premières</h2>
+<% @raw_materials.each do |raw_material| %>
+<div>
+  <%= hidden_field_tag "production[raw_materials][#{raw_material.id}][raw_material_id]", raw_material.id %>
+  <%= label_tag "production[raw_materials][#{raw_material.id}][quantity_used]", raw_material.name %>
+  <%= number_field_tag "production[raw_materials][#{raw_material.id}][quantity_used]", nil, step: 0.01, placeholder: "Quantité (kg)" %>
+</div>
+<% end %>
+
+<div class="form-group">
+  <%= form.submit "Créer Production", class: "btn btn-primary" %>
+</div>
 <% end %>

@@ -39,12 +39,14 @@ class ProductionsController < ApplicationController
   end
 
   def edit
+    @production = current_user.productions.find(params[:id]) #trouver la production pour pouvoir la supprimer
   end
 
   def update
   end
 
   def destroy
+    @production = current_user.productions.find(params[:id]) #trouver la production pour pouvoir la supprimer
     @production.destroy
     redirect_to productions_path, notice: "Production supprimée avec succès."
   end

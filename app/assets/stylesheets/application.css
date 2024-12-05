@@ -56,9 +56,10 @@
     width: 100%;
 }
 .footer-copyright{
+    background-color: #254b74;
+    color: white;
     display: flex;
     justify-content: center;
-    border-top: 1px solid #555;
     padding-top: 8px;
 }
 .footer-column a{
@@ -74,6 +75,7 @@
     margin-top: 5px;
 }
 .footer-copyright p{
+    padding-top: 2px;
     font-size: 14px;
 }
 .navbar-logo{

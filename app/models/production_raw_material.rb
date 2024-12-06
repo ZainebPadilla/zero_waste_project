@@ -12,7 +12,7 @@ class ProductionRawMaterial < ApplicationRecord
 
    # Method to calculate generated waste
   def waste_generated
-    return super unless super.nil? 
+    return 0 if quantity_used.to_f.zero? # Éviter la division par zéro
     (quantity_used.to_f * raw_material.waste_rate).round(2)
   end
 end

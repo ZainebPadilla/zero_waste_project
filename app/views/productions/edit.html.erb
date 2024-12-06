@@ -8,12 +8,12 @@
 
   <h2>Matières premières utilisées</h2>
   <div id="raw-materials">
-    <% @production.production_raw_materials.each do |prm| %>
-      <div class="mb-3">
-        <%= label_tag "raw_material_#{prm.raw_material_id}_quantity", prm.raw_material.name %>
-        <%= number_field_tag "production[raw_materials_attributes][#{prm.id}][quantity_used]", prm.quantity_used, class: "form-control", step: 0.01 %>
-
-      </div>
+    <% @production.production_raw_materials.each_with_index do |prm, index| %>
+    <div class="mb-3">
+        <%= label_tag "production_production_raw_materials_attributes_#{index}_quantity_used", prm.raw_material.name %>
+        <%= number_field_tag "production[production_raw_materials_attributes][#{index}][quantity_used]", prm.quantity_used, class: "form-control", step: 0.01 %>
+        <%= hidden_field_tag "production[production_raw_materials_attributes][#{index}][id]", prm.id %>
+    </div>
     <% end %>
 
 

@@ -96,7 +96,7 @@ class ProductionsController < ApplicationController
   private
 
   def production_params
-    params.require(:production).permit(:process_name)
+    params.require(:production).permit(:process_name, production_raw_materials_attributes: [:id, :quantity_used])# raw raw_materials_attributes allows to uptade raw materials quantity and not just the process_name)
   end
 
 end

@@ -1,0 +1,27 @@
+<table>
+  <thead>
+    <tr>
+      <th>Processus</th>
+      <th>Quantité Gaspillée (kg)</th>
+      <th>Émissions CO₂ (kg)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @productions.each do |production| %>
+      <tr>
+        <td><%= production.process_name %></td>
+       
+        <td>
+          <%= production.production_raw_materials.sum { |prm| prm.raw_material.waste_rate * prm.quantity_used } %> kg <!-- Total déchets -->
+        </td>
+        <td>
+          <%= production.production_raw_materials.sum { |prm| prm.raw_material.co2_per_kg * prm.quantity_used * prm.raw_material.waste_rate } %> kg CO2 <!-- Total CO2 -->
+        </td>
+        </tr>
+    <% end %>
+  </tbody>
+</table>
+
+      <td>
+         <%= link_to "Detail", productions_path, class: "btn btn-primary" %>
+      </td>

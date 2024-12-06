@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   get "pages/team"
   get "pages/contact"
   
-
+  get 'dashboard', to: 'dashboard#index', as: :user_dashboard
   
   resources :dashboard, only: [:index]
   devise_for :users

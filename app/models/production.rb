@@ -1,8 +1,10 @@
 class Production < ApplicationRecord
  
   belongs_to :user
-  has_many :production_raw_materials
+  has_many :production_raw_materials, dependent: :destroy
   has_many :raw_materials, through: :production_raw_materials
+
+  accepts_nested_attributes_for :production_raw_materials #allows rails tomanage raw materiamls attributes in prroduction
 
    # Validations
    validates :process_name, presence: true

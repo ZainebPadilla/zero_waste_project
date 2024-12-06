@@ -1,25 +1,63 @@
-<table>
-  <thead>
-    <tr>
-      <th>Processus</th>
-      <th>Quantité Gaspillée (kg)</th>
-      <th>Émissions CO₂ (kg)</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @productions.each do |production| %>
-      <tr>
-        <td><%= production.process_name %></td>
-       
-        <td>
-          <%= production.production_raw_materials.sum { |prm| prm.raw_material.waste_rate * prm.quantity_used } %> kg <!-- Total déchets -->
-        </td>
-        <td>
-          <%= production.production_raw_materials.sum { |prm| prm.raw_material.co2_per_kg * prm.quantity_used * prm.raw_material.waste_rate } %> kg CO2 <!-- Total CO2 -->
-        </td>
-        </tr>
-    <% end %>
-  </tbody>
-</table>
+<div class="container-fluid mt-5">
+</div>
+<div class="row">
+  <!-- Waste quantity table -->
+  <div class="col-md-6">
+    <div class="card mb-4">
+      <div class="card-header bg-primary  text-white">
+        Quantité Gaspillée (kg)
+      </div>
+      <div class="card-body">
+        <table class="table table-striped table-bordered table-hover table-sm">
+          <thead class="thead-dark">
+            <tr>
+              <th>Processus</th>
+              <th>Quantité Gaspillée (kg)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @productions.each do |production| %>
+              <tr>
+                <td class="text-nowrap"><%= production.process_name %></td>
+                <td class="text-nowrap">
+                  <%= production.production_raw_materials.sum { |prm| prm.raw_material.waste_rate * prm.quantity_used } %> kg
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
 
-    
+  <!-- CO2 emission table -->
+  <div class="col-md-6">
+    <div class="card mb-4">
+      <div class="card-header bg-primary text-white">
+        Émissions CO₂ (kg)
+      </div>
+      <div class="card-body">
+        <table class="table table-striped table-bordered table-hover table-sm">
+          <thead class="thead-dark">
+            <tr>
+              <th>Processus</th>
+              <th>Émissions CO₂ (kg)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @productions.each do |production| %>
+              <tr>
+                <td class="text-nowrap"><%= production.process_name %></td>
+                <td class="text-nowrap">
+                  <%= production.production_raw_materials.sum { |prm| prm.raw_material.co2_per_kg * prm.quantity_used * prm.raw_material.waste_rate } %> kg CO₂
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+

@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   get "pages/team"
   get "pages/contact"
+  get 'legal', to: 'pages#legal'
   
   get 'dashboard', to: 'dashboard#index', as: :user_dashboard
   

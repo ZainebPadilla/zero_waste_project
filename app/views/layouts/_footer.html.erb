@@ -2,18 +2,19 @@
   <div class="footer-container">
     <!-- Colonnes de contenu -->
     <div class="footer-column">
-      <h3>About us</h3>
+      <h3>A propos</h3>
       <ul>
-        <li><%= link_to 'Zaineb Padilla', 'https://www.linkedin.com/in/zaineb-padilla-7415a25a/' %></li>
-        <li><%= link_to 'Stéphane Dubail', 'https://www.linkedin.com/in/st%C3%A9phane-dubail-53005032b/' %></li>
-        <li><%= link_to 'Nora Vergoz', 'https://www.linkedin.com/in/nora-vergoz-26534432b/' %></li>
+        <li><%= link_to 'Notre équipe', pages_team_path, class: 'nav-link' %></li>
+        <li><%= link_to 'Contact', pages_contact_path, class: 'nav-link' %></li>
       </ul>
     </div>
 
     <div class="footer-column">
-    <h3>Support</h3>
+    <h3>Partenaire</h3>
     <ul>
-      <li><%= link_to 'TheHackingProject', 'https://www.thehackingproject.org/' %></li>
+    <%= link_to 'https://www.thehackingproject.org/', target: "_blank" do %>
+      <%= image_tag "logothp.png", alt: "Logo", class: "footer-logo" %>
+    <% end %>    
     </ul>
     </div>
 
@@ -30,7 +31,8 @@
   <div class="footer-copyright">
     <p>© 2024 ECO². Tous droits réservés.</p>
     <p>
-    Designed by <%= link_to 'Zaineb Padilla', 'https://www.linkedin.com/in/zaineb-padilla-7415a25a/', target: '_blank' %>,
+    Conçu par 
+    <%= link_to 'Zaineb Padilla', 'https://www.linkedin.com/in/zaineb-padilla-7415a25a/', target: '_blank' %>,
     <%= link_to 'Stéphane Dubail', 'https://www.linkedin.com/in/st%C3%A9phane-dubail-53005032b/', target: '_blank' %> et
     <%= link_to 'Nora Vergoz', 'https://www.linkedin.com/in/nora-vergoz-26534432b/', target: '_blank' %>
     </p>

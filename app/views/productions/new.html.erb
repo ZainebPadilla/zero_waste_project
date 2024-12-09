@@ -18,11 +18,14 @@
 
 <h2>Matières Premières</h2>
 <% @raw_materials.each do |raw_material| %>
-<div class="form-group">
-  <%= hidden_field_tag "production[raw_materials][#{raw_material.id}][raw_material_id]", raw_material.id %>
-  <%= label_tag "production[raw_materials][#{raw_material.id}][quantity_used]", raw_material.name %>
-  <%= number_field_tag "production[raw_materials][#{raw_material.id}][quantity_used]", nil, step: 0.01, placeholder: "Quantité (kg)", class: "form-control" %>
-</div>
+<details>
+  <summary><%= raw_material.name %></summary>
+  <div class="form-group">
+    <%= hidden_field_tag "production[raw_materials][#{raw_material.id}][raw_material_id]", raw_material.id %>
+    <%= label_tag "production[raw_materials][#{raw_material.id}][quantity_used]", "Quantité (kg)" %>
+    <%= number_field_tag "production[raw_materials][#{raw_material.id}][quantity_used]", nil, step: 0.01, placeholder: "Quantité (kg)", class: "form-control" %>
+  </div>
+</details>
 <% end %>
 
 <div class="form-group">

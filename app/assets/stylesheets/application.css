@@ -114,3 +114,7 @@
     width: 35px; 
 }
 
+.custom-title {
+    margin-top: 50px; /* Ajustez la valeur selon vos besoins */
+    margin-bottom: 10px; /* Ajustez la valeur selon vos besoins */
+  }

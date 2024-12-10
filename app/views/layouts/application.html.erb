@@ -58,6 +58,9 @@
                 <%= link_to 'Mes Productions', productions_path, class: 'btn btn-link nav-link' %>
               </li>
               <li class="nav-item">
+                <%= link_to "Mon Profil", edit_user_registration_path, class: "nav-link" %>
+              </li>
+              <li class="nav-item">
                 <%= button_to 'Déconnexion', destroy_user_session_path, method: :delete, class: 'btn btn-link nav-link' %>
               </li>
               <% else %>

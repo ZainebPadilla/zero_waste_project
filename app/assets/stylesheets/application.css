@@ -45,6 +45,11 @@
     margin-bottom: 5px;
     margin-left: 32px;
 }
+.footer-logo{
+    width: 90px;
+    padding-top: 6px;
+    padding-left: 3px;
+}
 .footer-column ul{
     list-style: none;
     margin-bottom: 5px;

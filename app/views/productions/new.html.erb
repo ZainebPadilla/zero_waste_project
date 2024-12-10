@@ -6,7 +6,14 @@
 <% if @production.errors[:process_name].any? %>
 <div class="alert alert-danger">
   <% @production.errors[:process_name].each do |error| %>
-  <p><%= error %></p>
+  <p>
+    <%= case error
+          when "can't be blank"
+            "Le nom du processus ne peut pas être vide."
+          else
+            "Erreur pour le nom du processus : #{error}"
+          end %>
+  </p>
   <% end %>
 </div>
 <% end %>

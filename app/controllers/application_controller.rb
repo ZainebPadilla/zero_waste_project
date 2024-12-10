@@ -8,3 +8,6 @@ class ApplicationController < ActionController::Base
     user_dashboard_path # Remplacez par le chemin souhaité
    end
 end
+def configure_sign_up_params
+  devise_parameter_sanitizer.permit(:sign_up, keys: [:first_name])
+end

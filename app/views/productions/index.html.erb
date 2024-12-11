@@ -1,6 +1,6 @@
 <div class="container-fluid mt-5">
-</div> 
-  
+</div>
+
 <h1>Index des Productions enregistrées </h1>
 <br>
 
@@ -28,31 +28,31 @@
       </thead>
       <tbody>
         <% @productions.each do |production| %>
-          <tr>
-            <td><%= production.process_name %></td>
-            <td>
-              <% production.production_raw_materials.each do |prm| %>
-                <p>
-                  <%= prm.raw_material.name %> : <%= prm.quantity_used %> kg
-                </p>
-              <% end %>
-            </td>
-            <td>
-              <%= production.production_raw_materials.sum(&:quantity_used) %> kg
-            </td>
-            <td>
-              <%= production.production_raw_materials.sum { |prm| prm.raw_material.waste_rate * prm.quantity_used } %> kg
-            </td>
-            <td>
-              <%= production.production_raw_materials.sum { |prm| prm.raw_material.co2_per_kg * prm.quantity_used * prm.raw_material.waste_rate } %> kg CO2
-            </td>
-            <td>
-              <div class="btn-group">
-                <%= link_to "Modifier", edit_production_path(production), class: "btn btn-primary btn-sm me-2" %>
-                <%= button_to "Supprimer", production_path(production), method: :delete, data: { confirm: "Êtes-vous sûr de vouloir supprimer ce processus ?" }, class: "btn btn-danger btn-sm" %>
-              </div>
-            </td>
-          </tr>
+        <tr>
+          <td><%= production.process_name %></td>
+          <td>
+            <% production.production_raw_materials.each do |prm| %>
+            <p>
+              <%= prm.raw_material.name %> : <%= prm.quantity_used %> kg
+            </p>
+            <% end %>
+          </td>
+          <td>
+            <%= production.production_raw_materials.sum(&:quantity_used) %> kg
+          </td>
+          <td>
+            <%= production.production_raw_materials.sum { |prm| prm.raw_material.waste_rate * prm.quantity_used } %> kg
+          </td>
+          <td>
+            <%= production.production_raw_materials.sum { |prm| prm.raw_material.co2_per_kg * prm.quantity_used * prm.raw_material.waste_rate } %> kg CO2
+          </td>
+          <td>
+            <div class="btn-group">
+              <%= link_to "Modifier", edit_production_path(production), class: "btn btn-primary btn-sm me-2" %>
+              <%= button_to "Supprimer", production_path(production), method: :delete, data: { confirm: "Êtes-vous sûr de vouloir supprimer ce processus ?" }, class: "btn btn-danger btn-sm" %>
+            </div>
+          </td>
+        </tr>
         <% end %>
       </tbody>
     </table>

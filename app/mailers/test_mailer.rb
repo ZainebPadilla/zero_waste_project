@@ -2,7 +2,7 @@ class TestMailer < ApplicationMailer
   def welcome_email(user)
     @user = user
     mail(
-      to: @user.email,   # Destinataire correct
+      to: @user.email,  
       subject: "Test Mailjet",
       body: "Bienvenu sur Eco²"
     )

@@ -27,5 +27,8 @@
 #       "yes": yup
 #       enabled: "ON"
 
-en:
-  hello: "Hello world"
+fr:
+  devise:
+    registrations:
+      destroyed: "Votre compte a été supprimé avec succès."
+

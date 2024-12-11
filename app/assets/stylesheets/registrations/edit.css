@@ -1,0 +1,23 @@
+.card-body{
+    background-image: url('background.png');
+    background-size: cover;
+    background-position: center;
+    background-size: 150%;
+}
+
+.form-control{
+    background-color: beige;
+    color: black;
+}
+
+/* Lorsque le champ est sélectionné (focus), changer légèrement la couleur */
+.form-control:focus {
+    background-color: #e6e6e6;  /* Fond légèrement plus foncé lorsqu'il est sélectionné */
+    border-color: #007bff;      /* Bordure bleue pour l'élément focus */
+    outline: none;              /* Supprime l'outline par défaut du navigateur */
+    color: black;  
+}
+
+.form-label{
+    font-size: 16px;
+}

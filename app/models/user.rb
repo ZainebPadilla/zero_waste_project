@@ -7,7 +7,7 @@ class User < ApplicationRecord
          after_create :welcome_send
 
          def welcome_send
-           TestMailer.test_email(self).deliver_now
+           TestMailer.welcome_email(self).deliver_now
          end
 
 end

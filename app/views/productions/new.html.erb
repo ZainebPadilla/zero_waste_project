@@ -1,7 +1,7 @@
 <h1>Créer une nouvelle Production</h1>
 
 
-<%= form_with(model: @production, local: true) do |form| %>
+<%= form_with(model: @production) do |form| %>
 <% if @production.errors[:process_name].any? %>
 <div class="alert alert-danger">
   <% @production.errors[:process_name].each do |error| %>

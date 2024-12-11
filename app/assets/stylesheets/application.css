@@ -23,11 +23,13 @@
     overflow-x: hidden;
     position: relative;
   }
+
   
   body {
     display: flex;
     flex-direction: column;
   }
+
 
 
 .page-wrapper {

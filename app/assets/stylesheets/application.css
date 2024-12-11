@@ -20,6 +20,7 @@
     background: linear-gradient(90deg, #1E90FF, #00BFFF); /* Remplacez par vos couleurs bleu */
     color: white; /* Optionnel pour s'assurer que le texte reste lisible */
   }
+
  html, body {
     margin: 0;
     padding: 0;

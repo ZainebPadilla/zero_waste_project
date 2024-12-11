@@ -46,32 +46,21 @@
 
 
 <div class="contact-container">
-  <form action="" class="contact-form">
-    <div class="contact-header">
+  <form action="" class="contact-left">
+    <div class="contact-left-title">
       <h2>Contactez-nous !</h2>
       <hr>
     </div>
 
-    <div class="form-body row">
-      <!-- Form Section -->
-      <div class="contact-left col-md-6 text-white p-4">
-        <div class="mb-4">
-          <label for="email" class="form-label">Adresse e-mail</label>
-          <input type="email" class="form-control" id="email" placeholder="Entrez votre email" required>
-        </div>
-
-        <div class="mb-4">
-          <label for="message" class="form-label">Votre message</label>
-          <textarea class="form-control" id="message" rows="4" placeholder="Entrez votre message" required></textarea>
-        </div>
-
+        <label for="email" class="form-label">Adresse email</label>
+        <input type="email" name="email" placeholder="Entrez votre email" class="contact-inputs" required>
+        <label for="message" class="form-label">Votre message</label>
+        <textarea name="message" placeholder="Entrez votre message" class="contact-inputs" required></textarea>
         <button type="submit" class="btn btn-primary">Envoyer</button>
-      </div>
+    </form>
 
-      <!-- Image Section -->
-      <div class="contact-right col-md-6 d-flex align-items-center justify-content-center">
+      <div class="contact-right">
         <%= image_tag "contact-us1.jpg", alt: "Logo", class: "contact-logo img-fluid" %>
       </div>
     </div>
-  </form>
 </div>

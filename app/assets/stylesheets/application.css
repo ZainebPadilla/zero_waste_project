@@ -17,6 +17,7 @@
 
  html, body {
     height: 100%;
+
   }
 
   body {
@@ -41,6 +42,13 @@
     overflow-x: hidden;
     position: relative;
   }
+
+  
+  body {
+    display: flex;
+    flex-direction: column;
+  }
+
 
 
 .page-wrapper {

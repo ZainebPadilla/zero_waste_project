@@ -1,18 +1,12 @@
 <h1>Créer une nouvelle Production</h1>
 
 
-<%= form_with(model: @production, local: true) do |form| %>
-<!-- Afficher les erreurs spécifiques à process_name -->
+<%= form_with(model: @production) do |form| %>
 <% if @production.errors[:process_name].any? %>
 <div class="alert alert-danger">
   <% @production.errors[:process_name].each do |error| %>
   <p>
-    <%= case error
-          when "can't be blank"
-            "Le nom du processus ne peut pas être vide."
-          else
-            "Erreur pour le nom du processus : #{error}"
-          end %>
+    <%= error == "can't be blank" ? "Le nom du processus ne peut pas être vide." : "Erreur : #{error}" %>
   </p>
   <% end %>
 </div>

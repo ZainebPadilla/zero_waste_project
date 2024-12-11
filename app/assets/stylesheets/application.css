@@ -13,17 +13,24 @@
  *= require_tree .
  *= require_self
  *= require bootstrap.min-4
+ *= require team
  */
 
+ .bg-gradient-custom {
+    background: linear-gradient(90deg, #1E90FF, #00BFFF); /* Remplacez par vos couleurs bleu */
+    color: white; /* Optionnel pour s'assurer que le texte reste lisible */
+  }
  html, body {
     margin: 0;
     padding: 0;
     width: 100%;
     overflow-x: hidden;
     position: relative;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    height: 100%;
   }
-  
-
 
 .page-wrapper {
     display: flex;
@@ -33,16 +40,15 @@
 .container{
     flex: 1;
 }
-.footer{
-    font-family: 'Open Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
-    font-size: 16px;
-    background-color: rgba(238, 238, 238, 1);
-    color: #008cba;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    margin-top: auto; /* Assure qu'il est toujours poussé vers le bas */
+.footer {
+  font-family: 'Open Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
+  font-size: 16px;
+  background-color: rgba(238, 238, 238, 1);
+  color: #008cba;
+  width: 100%;
+  margin-top: auto;
 }
+
 .footer-container{
     display: flex;
     justify-content: space-around;
@@ -95,5 +101,15 @@
 }
 .navbar-logo{
     width: 35px; 
+}
+
+.custom-title {
+    margin-top: 50px; /* Ajustez la valeur selon vos besoins */
+    margin-bottom: 10px; /* Ajustez la valeur selon vos besoins */
+    padding-top: 30px;
+  }
+
+.space_around {
+    margin-top: 30px;
 }
 

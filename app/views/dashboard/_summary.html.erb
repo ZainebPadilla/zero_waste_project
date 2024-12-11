@@ -59,5 +59,30 @@
     </div>
   </div>
 </div>
+<% if @waste_data.present? %>
+  <div class="container mt-5">
+    <h3>Quantité Gaspillée (kg) par processus</h3>
+    <%= column_chart @waste_data, library: { title: { text: "Quantité Gaspillée (kg)", display: true }, legend: { position: "bottom" } } %>
+  </div>
+<% else %>
+  <p>Aucune donnée disponible pour la quantité gaspillée.</p>
+<% end %>
+
+<% if @co2_data.present? %>
+  <div class="container mt-5">
+    <h3>Émissions de CO₂ (kg) par processus</h3>
+    <%= column_chart @co2_data, library: { title: { text: "Émissions de CO₂ (kg)", display: true }, legend: { position: "bottom" } } %>
+  </div>
+<% else %>
+  <p>Aucune donnée disponible pour les émissions de CO₂.</p>
+<% end %>
 
 
+<%= column_chart({"Processus 1" => 10, "Processus 2" => 20}, library: { title: { text: "Test Chart", display: true }, legend: { position: "bottom" } }) %>
+
+
+<div>
+  <%= column_chart({"Test 1" => 1, "Test 2" => 2}) %>
+</div>
+
+<%= column_chart({"Test 1" => 1, "Test 2" => 2}) %>

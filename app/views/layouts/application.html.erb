@@ -18,6 +18,9 @@
 
   <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
   <%= javascript_importmap_tags %>
+  <%= javascript_include_tag "application", "type": "module", "data-turbo-track": "reload" %>
+
+  
 
 </head>
 
@@ -52,7 +55,7 @@
               </li>
               <% if user_signed_in? %>
               <li class="nav-item">
-                <%= link_to "Mon Dashboard #{current_user.first_name}!", dashboard_index_path, class: "nav-link" %>
+                <%= link_to "Mon Dashboard #{current_user.first_name}", dashboard_index_path, class: "nav-link" %>
               </li>
               <li class="nav-item">
                 <%= link_to 'Mes Productions', productions_path, class: 'btn btn-link nav-link' %>
@@ -75,10 +78,10 @@
         </div>
     </nav>
 
-  <main class="flex-grow-1 ">
-    <%= yield %>
-  </main>
 
+     <div class="container mt-4">
+    <%= yield %>
+  </div>
 
   <footer class="mt-auto bg-light py-3 text-center"">
       <%= render 'layouts/footer' %>

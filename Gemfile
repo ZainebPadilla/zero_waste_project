@@ -59,5 +59,5 @@ group :test do
 end
 
 
-gem 'groupdate', '~> 6.5', '>= 6.5.1'
-gem 'chartkick', '~> 5.1', '>= 5.1.2'
+gem 'chartkick'
+gem 'groupdate'

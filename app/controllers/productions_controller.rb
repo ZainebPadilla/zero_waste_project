@@ -10,7 +10,6 @@ class ProductionsController < ApplicationController
       Rails.logger.warn "Productions is nil"
     end
   
-    # Assurez-vous que @productions est un ActiveRecord::Relation
     if @productions.blank?
       @waste_rates_by_process = {}
       return
@@ -40,7 +39,6 @@ class ProductionsController < ApplicationController
     @production = current_user.productions.build(production_params)
   
     if @production.save
-      # Message de succès, qui sera affiché après la redirection
       flash[:notice] = "Production créée avec succès."
   
       # Enregistrer les matières premières associées à la production
@@ -53,11 +51,8 @@ class ProductionsController < ApplicationController
           quantity_used: raw_material_data[:quantity_used]
         )
       end
-  
-      # Redirection vers la page des productions avec un message de succès
       redirect_to productions_path
     else
-      # En cas d'erreur, on réaffiche la page de création avec les erreurs visibles dans la vue
       @raw_materials = RawMaterial.all
       render :new, status: :unprocessable_entity
     end
@@ -65,30 +60,23 @@ class ProductionsController < ApplicationController
   
 
   def edit
-    @production = current_user.productions.find(params[:id]) #trouver la production pour pouvoir la supprimer
-    @raw_materials = RawMaterial.all #find all raw maerials
+    @production = current_user.productions.find(params[:id]) 
+    @raw_materials = RawMaterial.all 
   end
 
   def update
-    @production = current_user.productions.find(params[:id])
-
-    
+    @production = current_user.productions.find(params[:id]) 
     if @production.update(production_params)
       redirect_to productions_path, notice: "Production mise à jour avec succès."
-    else
-      
+    else 
       @raw_materials = RawMaterial.all
       render :edit, status: :unprocessable_entity
     end
-
   end
 
   def destroy
-    @production = current_user.productions.find(params[:id]) #find production to destroy it/ delete it
-
-     # delete raw materials 
+    @production = current_user.productions.find(params[:id]) 
     @production.production_raw_materials.destroy_all
-
     @production.destroy
     redirect_to productions_path, notice: "Production supprimée avec succès."
   end

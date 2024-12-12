@@ -3,11 +3,16 @@ Rails.application.routes.draw do
   get "pages/contact"
   get 'legal', to: 'pages#legal'
   
+  resources :contact, only: [:create]
+
   get 'dashboard', to: 'dashboard#index', as: :user_dashboard
   
   resources :dashboard, only: [:index]
   devise_for :users, controllers: { registrations: 'users/registrations' }
   
+  get 'contact', to: 'contact#new'
+  # Route to handle the form submission
+  get 'send_to_mailjet', to: 'contact#create'
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

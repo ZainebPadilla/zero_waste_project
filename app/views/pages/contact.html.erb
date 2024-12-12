@@ -3,19 +3,15 @@
     <div class="row">
       <h1 style="padding-top: 50px">Contactez-nous !</h1>
       <div class="col-md-6 mb-4 mt-5">
-        <form action="https://app.mailjet.com/widget/iframe/YOUR_FORM_ID" method="post">
-          <div class="mb-3">
-            <label for="email" class="form-label">Votre adresse email</label>
-            <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp" placeholder="Votre email" required>
-          </div>
+        <%= form_with url: "/send_to_mailjet", method: :get, local: true do |f| %>
+        <%= f.label :email, "Votre adresse email" %>
+        <%= f.email_field :email, required: true %>
 
-          <div class="mb-3">
-            <label for="message" class="form-label">Racontez-nous</label>
-            <textarea class="form-control" id="message" name="message" rows="5"></textarea>
-          </div>
+        <%= f.label :message, "Votre message" %>
+        <%= f.text_area :message, rows: 5, required: true %>
 
-          <button type="submit" class="btn btn-primary">Envoyer</button>
-        </form>
+        <%= f.submit "Envoyer" %>
+      <% end %>
       </div>
 
       <div class="col-md-4 d-flex justify-content-center align-items-center">

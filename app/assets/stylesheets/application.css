@@ -131,9 +131,11 @@
   }
 
   .icon {
-    width: 24px; /* Ajustez la largeur selon vos besoins */
-    height: auto; /* Maintient le ratio d'aspect */
-    margin-right: 30px; /* Espace entre l'icône et le texte */
+    width: 40px; 
+    height: auto; 
+    margin-right: 30px; 
+    margin-bottom: 0px;
+    justify-content: space-between;
     
   }
   

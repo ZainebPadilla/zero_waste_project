@@ -2,9 +2,10 @@
   <div class="text-center mb-4">
     <h1 class="display-4">Nouvelle production</h1>
   </div>
-
+    
   <div class="row justify-content-center">
     <div class="col-md-8">
+      <%= link_to "Retour", :back, class: "btn btn-secondary btn-sm" %>
       <%= form_with(model: @production, class: "p-4 bg-default rounded shadow") do |form| %>
       <% if @production.errors[:process_name].any? %>
       <div class="alert alert-danger mb-4">
@@ -37,7 +38,11 @@
       </div>
 
       <div class="form-group mt-5">
-        <%= form.submit "Créer Production", class: "btn btn-success btn-lg w-100" %>
+        <%= form.submit "Créer Production", class: "btn btn-success btn-lg w-100" %> 
+      </div>
+      <br>
+      <div>
+        <%= link_to "Retour", :back, class: "btn btn-primary btn-sm" %>
       </div>
       <% end %>
     </div>

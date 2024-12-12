@@ -20,10 +20,13 @@
       </div>
 
       <%= form.submit "Mettre à jour", class: "btn btn-primary" %>
+       <%= link_to "Annuler", productions_path, class: "btn btn-secondary" %> <br> <br>
       <% end %>
-      <br>
+    
 
-      <%= link_to "Annuler", productions_path, class: "btn btn-secondary" %>
+     
+      <%= link_to "Retour", :back, class: "btn btn-primary btn-sm" %>
+      
     </div>
   </div>
 </div>

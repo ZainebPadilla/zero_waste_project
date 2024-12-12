@@ -3,26 +3,26 @@
     <div class="col-md-6">
       <div class="card">
         <div class="card-header">
-          <h2>Connexion</h2>
+          <h2 class="text-center text-white">Connexion</h2>
         </div>
-        <div class="card-body">
+        <div class=" card-body">
           <%= form_with(model: resource, as: resource_name, url: session_path(resource_name), local: true, class: "form") do |f| %>
-            <div class="mb-3">
-              <%= f.label :email, class: "form-label" %>
-              <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
-            </div>
+          <div class="mb-3">
+            <%= f.label :email, class: "form-label" %>
+            <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
+          </div>
 
-            <div class="mb-3">
-              <%= f.label :Mot_de_passe, class: "form-label" %>
-              <%= f.password_field :password, autocomplete: "current-password", class: "form-control" %>
-            </div>
+          <div class="mb-3">
+            <%= f.label :Mot_de_passe, class: "form-label" %>
+            <%= f.password_field :password, autocomplete: "current-password", class: "form-control" %>
+          </div>
 
-            <div class="form-check mb-3">
-              <%= f.check_box :Se_souvenir, class: "form-check-input" %>
-              <%= f.label :Se_souvenir, class: "form-check-label" %>
-            </div>
+          <div class="form-check mb-3">
+            <%= f.check_box :Se_souvenir, class: "form-check-input" %>
+            <%= f.label :Se_souvenir, class: "form-check-label" %>
+          </div>
 
-            <%= f.submit "Se connecter", class: "btn btn-primary w-100" %>
+          <%= f.submit "Se connecter", class: "btn btn-primary w-100" %>
           <% end %>
         </div>
       </div>

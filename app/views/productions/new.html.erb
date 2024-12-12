@@ -1,35 +1,50 @@
-<h1>Créer une nouvelle Production</h1>
-
-
-<%= form_with(model: @production) do |form| %>
-<% if @production.errors[:process_name].any? %>
-<div class="alert alert-danger">
-  <% @production.errors[:process_name].each do |error| %>
-  <p>
-    <%= error == "can't be blank" ? "Le nom du processus ne peut pas être vide." : "Erreur : #{error}" %>
-  </p>
-  <% end %>
-</div>
-<% end %>
-
-<div class="form-group">
-  <%= form.label :process_name, "Nom du Processus" %>
-  <%= form.text_field :process_name, class: "form-control #{'is-invalid' if @production.errors[:process_name].any?}" %>
-</div>
-
-<h2>Matières Premières</h2>
-<% @raw_materials.each do |raw_material| %>
-<details>
-  <summary><%= raw_material.name %></summary>
-  <div class="form-group">
-    <%= hidden_field_tag "production[raw_materials][#{raw_material.id}][raw_material_id]", raw_material.id %>
-    <%= label_tag "production[raw_materials][#{raw_material.id}][quantity_used]", "Quantité (kg)" %>
-    <%= number_field_tag "production[raw_materials][#{raw_material.id}][quantity_used]", nil, step: 0.01, placeholder: "Quantité (kg)", class: "form-control" %>
+<div class="container mt-5 mb-5">
+  <div class="text-center mb-4">
+    <h1 class="display-4">Nouvelle production</h1>
   </div>
-</details>
-<% end %>
+    
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <%= link_to "Retour", :back, class: "btn btn-secondary btn-sm" %>
+      <%= form_with(model: @production, class: "p-4 bg-default rounded shadow") do |form| %>
+      <% if @production.errors[:process_name].any? %>
+      <div class="alert alert-danger mb-4">
+        <% @production.errors[:process_name].each do |error| %>
+        <p class="mb-0">
+          <%= error == "can't be blank" ? "Le nom du processus ne peut pas être vide." : "Erreur : #{error}" %>
+        </p>
+        <% end %>
+      </div>
+      <% end %>
 
-<div class="form-group">
-  <%= form.submit "Créer Production", class: "btn btn-primary" %>
+      <div class="form-group mb-4">
+        <%= form.label :process_name, "Nom du Processus", class: "form-label" %>
+        <%= form.text_field :process_name, class: "form-control form-control-lg #{'is-invalid' if @production.errors[:process_name].any?}" %>
+      </div>
+
+      <h3 class="mt-5 mb-4">Matières Premières</h3>
+
+      <div class="mb-4">
+        <% @raw_materials.each do |raw_material| %>
+        <details class="mb-3">
+          <summary class="fs-5 mb-2"><%= raw_material.name %></summary>
+          <div class="form-group ms-3">
+            <%= hidden_field_tag "production[raw_materials][#{raw_material.id}][raw_material_id]", raw_material.id %>
+            <%= label_tag "production[raw_materials][#{raw_material.id}][quantity_used]", "Quantité (kg)", class: "visually-hidden" %>
+            <%= number_field_tag "production[raw_materials][#{raw_material.id}][quantity_used]", nil, step: 0.01, placeholder: "Quantité (kg)", class: "form-control" %>
+          </div>
+        </details>
+        <% end %>
+      </div>
+
+      <div class="form-group mt-5">
+        <%= form.submit "Créer Production", class: "btn btn-success btn-lg w-100" %> 
+      </div>
+      <br>
+      <div>
+        <%= link_to "Retour", :back, class: "btn btn-primary btn-sm" %>
+      </div>
+      <% end %>
+    </div>
+  </div>
 </div>
-<% end %>

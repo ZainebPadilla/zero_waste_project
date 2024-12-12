@@ -1,83 +1,87 @@
-<div class="container my-5">
-  <div class="container">
-    <div class="row align-items-center">
+<div class="container-fluid p-0">
 
-      <div class="hero-unit" style="position: relative; text-align: center; color: white; padding: 50px 20px; overflow: hidden;">
+  <div class="row align-items-center">
+
+    <div class="col-12 p-0">
+
+      <div class="hero-unit" style="position: relative; text-align: center; color: white; padding: 100px 20px; overflow: hidden;">
+
         <%= image_tag("co2.jpg", style: "position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0;", alt: "Background image") %>
         <div style="background: rgba(0, 0, 0, 0.5); position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1;"></div>
         <div style="position: relative; z-index: 2;">
           <h1>ECO²</h1>
           <p>Calculer automatiquement les émissions de CO₂ associées aux déchets générés, et des indicateurs clés de performance environnementale.</p>
           <p>
-            <a href="#cardSection" class=" btn btn-primary">En savoir plus</a>
+            <a href="#cardSection" class="btn btn-primary">En savoir plus</a>
           </p>
         </div>
       </div>
-
     </div>
   </div>
+</div>
+
+<br>
+<br><br><br>
+</div>
+</div>
 </div>
 <div id="cardSection">
   <div class="container my-5">
     <div class="container">
       <div class="row align-items-center">
         <div class="col-md-4">
-          <%= image_tag("formulaire_zero_waste.png", class: "img-fluid rounded shadow-lg ", alt: "image présentant un exemple de formulaire") %>
+          <%= image_tag("prod.png", class: "img-fluid rounded shadow-lg border border-4 border-white", alt: "image présentant un exemple de formulaire") %>
         </div>
         <div class="col-md-8">
-          <h1>Mesurer</h1>
-          <p>Grâce à notre système de calcul et à notre base de données, vous pouvez renseigner vos données simplement et rapidement pour obtenir un rapport détaillé sur vos rejets et émissions CO₂ </p>
+          <h1 class="display-4 text-end text-white">Mesurer</h1>
+          <p class="text-end">Grâce à notre système de calcul avancé et notre base de données constamment mise à jour, vous disposez d’un outil simple et efficace pour mesurer vos impacts environnementaux en termes de rejets et d'émission carbone. En saisissant vos données opérationnelles, vous obtiendrez rapidement un rapport complet et détaillé. Notre solution est conçue pour simplifier la collecte de données.</p>
         </div>
       </div>
-    </div>
-  </div>
-</div>
-
-<div class="container my-5">
-  <div class="container">
-    <div class="row align-items-center">
-      <div class="col-md-8">
-        <h1>Analyser</h1>
-        <p>L'application propose des rapports visuels clairs avec diagrammes, graphiques en camembert et tableaux détaillés, pour analyser vos données et identifier les principaux impacts</p>
-      </div>
-      <div class="col-md-4">
-        <%= image_tag("diagrammes.png", class: "img-fluid rounded shadow-lg", alt: "image representant un graphique") %>
-      </div>
-    </div>
-  </div>
-</div>
-
-
-
-<div class="container">
-  <div class="row align-items-center">
-    <div class="col-md-4">
-
-      <%= image_tag("co2-6317011_640.jpg", class: "img-fluid rounded shadow-lg", alt: "Description de l'image") %>
-
-    </div>
-    <div class="col-md-8">
-      <h1>Réduire vos émissions</h1>
-      <p>Grâce à des graphiques intuitifs, identifiez facilement les zones d’impact majeur et priorisez les actions correctives pour optimiser vos performances et réduire vos impacts négatifs</p>
     </div>
   </div>
 </div>
 <br><br>
-
-
-
-<div class="card mb-3" style="display: flex; flex-direction: row; align-items: stretch; background-color: black;">
-  <div style="flex: 1; padding: 20px; color: white">
-    <h3 class="card-header">Card header</h3>
-    <div class="card-body">
-      <h5 class="card-title">Special title treatment</h5>
-      <h6 class="card-subtitle text-muted">Support card subtitle</h6>
-      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+<br><br>
+<div class="container my-5">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-md-8">
+        <h1 class="display-4 text-white">Analyser</h1>
+        <p>L’analyse est essentielle pour comprendre et interpréter vos résultats. Notre application proposera des outils visuels dynamiques : diagrammes explicatifs, graphiques interactifs, et tableaux comparatifs. Ces représentations vous permetteront d’identifier les tendances, de comparer les résultats, et de cerner précisément les processus les plus impactants. L’objectif est de transformer vos données en insights exploitables, offrant une vision claire pour orienter vos décisions stratégiques.</p>
+      </div>
+      <div class="col-md-4">
+        <%= image_tag("diagrammes.png", class: "img-fluid rounded shadow-lg border border-4 border-white", alt: "image representant un graphique") %>
+      </div>
     </div>
   </div>
+</div>
+<br>
+<br>
+<div class="progress">
+  <div class="progress-bar" role="progressbar" style="width: 15%;" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100"></div>
+  <div class="progress-bar bg-success" role="progressbar" style="width: 30%;" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100"></div>
+  <div class="progress-bar bg-info" role="progressbar" style="width: 20%;" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+</div>
+<br>
+<br>
 
-
-  <div style="flex: 0 0 200px; overflow: hidden; border-top-left-radius: 50%; border-bottom-left-radius: 50%;">
-    <%= image_tag("graph2.png", class: "d-block user-select-none", style: "width: 100%; height: 100%; object-fit: cover;", alt: "Placeholder: Image cap") %>
+<div class="container">
+  <div class="row align-items-center">
+    <div class="col-md-4 text-center">
+      <%= image_tag("co2-6317011_640.jpg", 
+          class: "img-fluid rounded-circle shadow-lg border border-4 border-white", 
+          style: "max-width: 300px; height: 300px; object-fit: cover;",
+          alt: "Description de l'image") 
+      %>
+    </div>
+    <div class="col-md-8">
+      <h1 class="display-4 text-white">Réduire</h1>
+      <p class="text-white-50">Après avoir mesuré vos émissions et analysé les données, la réduction de votre empreinte carbone devient l’objectif principal. Grâce aux informations claires et précises fournies par notre application, vous pouvez facilement identifier les zones les plus impactantes à optimiser. Cette étape vous aide à prioriser les efforts, qu’il s’agisse d’adopter des pratiques plus durables, de réduire vos déchets, ou de revoir vos processus opérationnels. </p>
+    </div>
   </div>
+</div>
+
+<br><br>
+<br><br>
+<br><br>
 </div>

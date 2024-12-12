@@ -1,24 +1,29 @@
-<h1>Edit Production</h1>
+<div class="container mt-5">
+  <h1 class="text-center mb-5">Modifier Production</h1>
 
-<%= form_with model: @production, local: true do |form| %>
-  <div class="mb-3">
-    <%= form.label :process_name, "Nom du processus" %>
-    <%= form.text_field :process_name, class: "form-control" %>
-  </div>
 
-  <h2>Matières premières utilisées</h2>
-  <div id="raw-materials">
-    <% @production.production_raw_materials.each_with_index do |prm, index| %>
-    <div class="mb-3">
-        <%= label_tag "production_production_raw_materials_attributes_#{index}_quantity_used", prm.raw_material.name %>
-        <%= number_field_tag "production[production_raw_materials_attributes][#{index}][quantity_used]", prm.quantity_used, class: "form-control", step: 0.01 %>
-        <%= hidden_field_tag "production[production_raw_materials_attributes][#{index}][id]", prm.id %>
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <%= form_with model: @production, local: true do |form| %>
+      <div class="mb-3">
+        <%= form.label :process_name, "Nom du processus", class: "form-label" %>
+        <%= form.text_field :process_name, class: "form-control" %>
+      </div>
+      <div id="raw-materials">
+        <% @production.production_raw_materials.each_with_index do |prm, index| %>
+        <div class="mb-3">
+          <%= label_tag "production_production_raw_materials_attributes_#{index}_quantity_used", prm.raw_material.name, class: "form-label" %>
+          <%= number_field_tag "production[production_raw_materials_attributes][#{index}][quantity_used]", prm.quantity_used, class: "form-control", step: 0.01 %>
+          <%= hidden_field_tag "production[production_raw_materials_attributes][#{index}][id]", prm.id %>
+        </div>
+        <% end %>
+      </div>
+
+      <%= form.submit "Mettre à jour", class: "btn btn-primary" %>
+      <% end %>
+      <br>
+
+      <%= link_to "Annuler", productions_path, class: "btn btn-secondary" %>
     </div>
-    <% end %>
-
-
-  <%= form.submit "Mettre à jour", class: "btn btn-primary" %>
-<% end %>
-
-<%= link_to "Annuler", productions_path, class: "btn btn-secondary" %>
-
+  </div>
+</div>

@@ -1,11 +1,11 @@
 <div class="container-fluid mt-5">
 </div>
 
-<h1>Toutes mes productions</h1>
+<h1>Mes productions</h1>
 <br>
 
 <div class="card mb-4">
-  <div class="card-header bg-primary text-white">
+  <div class="card-header bg-success text-white">
     Liste des Productions
   </div>
   <div class="card-body">
@@ -27,23 +27,23 @@
           <td>
             <% production.production_raw_materials.each do |prm| %>
             <p>
-              <%= prm.raw_material.name %> : <%= prm.quantity_used %> 
+              <%= prm.raw_material.name %> : <%= prm.quantity_used %>
             </p>
             <% end %>
           </td>
           <td>
-            <%= production.production_raw_materials.sum(&:quantity_used) %> 
+            <%= production.production_raw_materials.sum(&:quantity_used) %>
           </td>
           <td>
-            <%= production.production_raw_materials.sum { |prm| prm.raw_material.waste_rate * prm.quantity_used } %> 
+            <%= production.production_raw_materials.sum { |prm| prm.raw_material.waste_rate * prm.quantity_used } %>
           </td>
           <td>
-            <%= production.production_raw_materials.sum { |prm| prm.raw_material.co2_per_kg * prm.quantity_used * prm.raw_material.waste_rate } %> 
+            <%= production.production_raw_materials.sum { |prm| prm.raw_material.co2_per_kg * prm.quantity_used * prm.raw_material.waste_rate } %>
           </td>
           <td>
             <div class="btn-group">
               <%= link_to "Modifier", edit_production_path(production), class: "btn btn-primary btn-sm me-2" %>
-              <%= button_to "Supprimer", production_path(production), method: :delete, data: { confirm: "Êtes-vous sûr de vouloir supprimer ce processus ?" }, class: "btn btn-danger btn-sm" %>
+              <%= button_to "Supprimer", production_path(production), method: :delete, data: { confirm: "Êtes-vous sûr de vouloir supprimer ce processus ?" }, class: "btn btn-warning btn-sm" %>
             </div>
           </td>
         </tr>

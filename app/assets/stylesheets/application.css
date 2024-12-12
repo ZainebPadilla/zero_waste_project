@@ -89,10 +89,10 @@
 .footer-column a{
     color: white;
     text-decoration: none;
-    font-size: 14px;
+    font-size: 13px;
 }
 .footer a:hover{
-    color: #146503;
+    color: #b58900;
 }
 .footer-column{
     padding: 3px;

@@ -22,18 +22,6 @@
     color: white; /* Optionnel pour s'assurer que le texte reste lisible */
   }
 
- html, body {
-    height: 100%;
-
-  }
-
-  body {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-  }
-  
-
 
  html, body {
     margin: 0;
@@ -85,9 +73,10 @@
     list-style: none;
     margin-bottom: 5px;
 }
-
+.footer li{
+  list-style-type: none;
+}
 .footer-column li:hover::before{
-    list-style-type: none;
     width: 100%;
 }
 .footer-copyright{
@@ -98,12 +87,12 @@
     padding-top: 8px;
 }
 .footer-column a{
-    color: #167573;
+    color: white;
     text-decoration: none;
-    font-size: 12px;
+    font-size: 14px;
 }
 .footer a:hover{
-    color: #c3911e;
+    color: #146503;
 }
 .footer-column{
     padding: 3px;

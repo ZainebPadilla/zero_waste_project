@@ -1,71 +1,68 @@
 <%= stylesheet_link_tag "team", media: "all" %>
 <div class="container mt-5">
-<section id="team">
-        <div class="text-center mb-5">
-            <h1 class="mb-3">Notre Équipe</h1>
-            <p class="lead">Découvrez les membres talentueux qui font le succès de notre entreprise.</p>
+  <section id="team">
+
+
+    <div class="text-center mb-5">
+      <h1 class="mb-3">Notre Équipe</h1>
+      <p class="lead">Découvrez les membres talentueux qui font le succès de notre entreprise.</p>
+    </div>
+
+
+    <div class="row">
+      <!-- Carte 1 -->
+      <div class="col-md-4">
+        <div class="card text-center">
+          <%= image_tag "1689169425140.jpg", class: "card-img-top", alt: "Stéphane" %>
+          <div class="card-body">
+            <h5 class="card-title">Stéphane</h5>
+            <p class="card-text">Description courte du rôle ou de la spécialité du membre.</p>
+          </div>
         </div>
+      </div>
 
-  <div class="text-center mb-5">
-    <h1 class="mb-3">Notre Équipe</h1>
-    <p class="lead">Découvrez les membres talentueux qui font le succès de notre entreprise.</p>
-  </div>
+      <!-- Carte 2 -->
+      <div class="col-md-4">
+        <div class="card text-center">
+          <%= image_tag "83050.jpg", class: "card-img-top", alt: "Zaïneb" %>
+          <div class="card-body">
+            <h5 class="card-title">Zaïneb</h5>
+            <p class="card-text">Description courte du rôle ou de la spécialité du membre.</p>
+          </div>
+        </div>
+      </div>
 
-
-  <div class="row">
-    <!-- Carte 1 -->
-    <div class="col-md-4">
-      <div class="card text-center">
-        <%= image_tag "1689169425140.jpg", class: "card-img-top", alt: "Stéphane" %>
-        <div class="card-body">
-          <h5 class="card-title">Stéphane</h5>
-          <p class="card-text">Description courte du rôle ou de la spécialité du membre.</p>
+      <!-- Carte 3 -->
+      <div class="col-md-4">
+        <div class="card text-center">
+          <%= image_tag "photonora.JPG", class: "card-img-top", alt: "Nora" %>
+          <div class="card-body">
+            <h5 class="card-title">Nora</h5>
+            <p class="card-text">Description courte du rôle ou de la spécialité du membre.</p>
+          </div>
         </div>
       </div>
     </div>
-
-    <!-- Carte 2 -->
-    <div class="col-md-4">
-      <div class="card text-center">
-        <%= image_tag "83050.jpg", class: "card-img-top", alt: "Zaïneb" %>
-        <div class="card-body">
-          <h5 class="card-title">Zaïneb</h5>
-          <p class="card-text">Description courte du rôle ou de la spécialité du membre.</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- Carte 3 -->
-    <div class="col-md-4">
-      <div class="card text-center">
-        <%= image_tag "photonora.JPG", class: "card-img-top", alt: "Nora" %>
-        <div class="card-body">
-          <h5 class="card-title">Nora</h5>
-          <p class="card-text">Description courte du rôle ou de la spécialité du membre.</p>
-        </div>
-      </div>
-    </div>
-  </div>
 </div>
 
 
 <section id="contact">
-<div class="contact-container">
-  <form action="" class="contact-left">
-    <div class="contact-left-title">
-      <h2>Contactez-nous !</h2>
+  <div class="contact-container">
+    <form action="" class="contact-left">
+      <div class="contact-left-title">
+        <h2>Contactez-nous !</h2>
 
+      </div>
+
+      <label for="email" class="form-label">Adresse email</label>
+      <input type="email" name="email" placeholder="Entrez votre email" class="contact-inputs" required>
+      <label for="message" class="form-label">Votre message</label>
+      <textarea name="message" placeholder="Entrez votre message" class="contact-inputs" required></textarea>
+      <button type="submit" class="btn btn-primary">Envoyer</button>
+    </form>
+
+    <div class="contact-right">
+      <%= image_tag "contact-us1.jpg", alt: "Logo", class: "contact-logo img-fluid" %>
     </div>
-
-    <label for="email" class="form-label">Adresse email</label>
-    <input type="email" name="email" placeholder="Entrez votre email" class="contact-inputs" required>
-    <label for="message" class="form-label">Votre message</label>
-    <textarea name="message" placeholder="Entrez votre message" class="contact-inputs" required></textarea>
-    <button type="submit" class="btn btn-primary">Envoyer</button>
-  </form>
-
-  <div class="contact-right">
-    <%= image_tag "contact-us1.jpg", alt: "Logo", class: "contact-logo img-fluid" %>
   </div>
-</div>
-</div>
+  </div>

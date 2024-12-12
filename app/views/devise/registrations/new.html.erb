@@ -2,38 +2,38 @@
   <div class="row justify-content-center">
     <div class="col-md-6">
       <div class="card shadow-sm">
-        <div class="card-header text-center bg-primary text-white">
+        <div class="card-header text-center bg-default text-white">
           <h2>Inscription</h2>
         </div>
         <div class="card-body">
 
           <%= form_with(model: resource, as: resource_name, url: registration_path(resource_name), local: true, class: "form") do |f| %>
-            <div class="mb-3">
-              <%= f.label :Prénom, class: "form-label" %>
-              <%= f.text_field :first_name, autofocus: true, autocomplete: "first_name", class: "form-control" %>
-            </div>
+          <div class="mb-3">
+            <%= f.label :Prénom, class: "form-label" %>
+            <%= f.text_field :first_name, autofocus: true, autocomplete: "first_name", class: "form-control" %>
+          </div>
 
-            <div class="mb-3">
-              <%= f.label :email, class: "form-label" %>
-              <%= f.email_field :email, autocomplete: "email", class: "form-control" %>
-            </div>
+          <div class="mb-3">
+            <%= f.label :email, class: "form-label" %>
+            <%= f.email_field :email, autocomplete: "email", class: "form-control" %>
+          </div>
 
-            <div class="mb-3">
-              <%= f.label :Mot_de_passe, class: "form-label" %>
-              <% if @minimum_password_length %>
-                <small class="form-text text-muted">(<%= @minimum_password_length %> caractères minimum)</small>
-              <% end %>
-              <%= f.password_field :password, autocomplete: "new-password", class: "form-control" %>
-            </div>
+          <div class="mb-3">
+            <%= f.label :Mot_de_passe, class: "form-label" %>
+            <% if @minimum_password_length %>
+            <small class="form-text text-muted">(<%= @minimum_password_length %> caractères minimum)</small>
+            <% end %>
+            <%= f.password_field :password, autocomplete: "new-password", class: "form-control" %>
+          </div>
 
-            <div class="mb-3">
-              <%= f.label :Confirmation, class: "form-label" %>
-              <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control" %>
-            </div>
+          <div class="mb-3">
+            <%= f.label :Confirmation, class: "form-label" %>
+            <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control" %>
+          </div>
 
-            <div class="d-grid">
-              <%= f.submit "S'inscrire", class: "btn btn-primary" %>
-            </div>
+          <div class="d-grid">
+            <%= f.submit "S'inscrire", class: "btn btn-primary" %>
+          </div>
           <% end %>
 
         </div>

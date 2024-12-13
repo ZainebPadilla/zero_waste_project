@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   
   resources :dashboard, only: [:index]
   devise_for :users, controllers: { registrations: 'users/registrations' }
-  resources :contact_form, only: %i[new create]
+  resources :contact_form, only: [:new, :create], path: "contact_form"
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

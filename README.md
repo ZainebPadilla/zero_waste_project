@@ -1,102 +1,85 @@
 
-Description
-Projet de Plateforme de Discussion et d'Analyse Communautaire sur les Cryptomonnaies
+1. Présentation
+Les entreprises, y compris dans le secteur de la restauration, sont de plus en plus conscientes des impacts environnementaux de leur activité. Cependant, le suivi précis du gaspillage des matières premières et des émissions de CO₂ associées reste un défi majeur. L'application permet de répondre à cette problématique en fournissant une solution pour mesurer, analyser et réduire ces impacts.
 
-1 Présentation :
+L'application permet aux entreprises de suivre les matières premières (quantités entrantes, consommées, et gaspillées), de calculer automatiquement les émissions de CO₂ associées aux déchets générés, et d'offrir des indicateurs clés de performance environnementale. L'objectif : réduire le gaspillage, optimiser les ressources, et minimiser l'empreinte carbone.
 
-Ce projet consiste à développer une plateforme web dédiée aux passionnés de cryptomonnaies. L'objectif est de permettre aux utilisateurs de suivre les tendances de différentes cryptomonnaies, de partager leur sentiment sur les mouvements du marché, et de participer à des discussions sous chaque actif. Pour une interaction plus authentique et engageante, seuls les utilisateurs connectés pourront voter et commenter.
+2. Parcours utilisateur
+L'application propose une interface simple et intuitive pour l'utilisateur :
 
-Fonctionnalités principales :
+En tant que visiteur :
+Lorsqu'une personne non connectée arrive sur le site, elle peut visualiser uniquement les indicateurs clés des entreprises.
 
-Affichage des informations de marché pour chaque cryptomonnaie, incluant les graphiques en temps réel grâce à l’intégration de TradingView.
-Système de vote communautaire pour indiquer le sentiment des utilisateurs sur la direction du marché de chaque cryptomonnaie (vote "Up" ou "Down" pour les prochaines 24 heures).
-Section de discussion sous chaque cryptomonnaie pour permettre aux utilisateurs de partager des analyses et des opinions.
-Fonctionnalité de favoris pour que les utilisateurs puissent suivre leurs cryptomonnaies préférées et recevoir des notifications pertinentes.
-2 User Stories :
+En tant qu'administrateur :
 
-2.1 Visiteur non connecté :
+1.Tableau de Bord : Lorsqu'un utilisateur se connecte, il accède à un tableau de bord affichant un résumé des indicateurs clés (taux de gaspillage global, émissions de CO₂, suivi des consommations).
 
-Accès aux informations générales et aux graphiques des cryptomonnaies.
-Lecture des discussions existantes.
-Ne peut pas voter ni commenter tant qu'il n'est pas connecté.
-2.2 Utilisateur connecté (Membre de la communauté) :
+2.Gestion des Matières Premières : L'utilisateur peut ajouter ou modifier les informations sur les matières premières (nom, coût).
 
-Peut voter (Up/Down) pour chaque cryptomonnaie, exprimant un sentiment de marché pour une durée de 24 heures.
-Accès à une section de discussion sous chaque cryptomonnaie pour interagir avec la communauté.
-Peut ajouter des cryptomonnaies à sa liste de favoris pour un suivi personnalisé.
-2.3 Administrateur :
+3.Suivi des Productions : Pour chaque production (ex. recette cuisinée pour un restaurant), l'utilisateur peut enregistrer les quantités utilisées, produites, et rejetées. L'application calcule automatiquement le gaspillage et les émissions de CO₂ associées.
 
-Gestion de la liste des cryptomonnaies et possibilité d’ajouter ou de supprimer des actifs.
-Visualisation de l'activité des membres pour garantir un bon fonctionnement de la plateforme.
-3 Concrètement et techniquement
+4.Rapport Détaillé : L'utilisateur peut consulter des rapports détaillés pour analyser les sources principales de gaspillage ou d'émissions et identifier les axes d'amélioration.
 
+3. Concrètement et techniquement
 3.1. Base de données
+La base de données sera construite ainsi :
+- Utilisateur : id, nom, email, role (admin ou visiteur).
+- Entreprise (1 utilisateur = 1 entreprise) : id, nom, description
+- Matières Premières : id, nom, coût.
+- Productions : id, date, quantité_produite, quantité_déchet, matières_utilisées.
+- Déchets : id, type, quantité, émission_CO2. - Indicateurs Clés : Calculs des indicateurs pour chaque production.
 
-Les tables principales et leurs relations incluront :
+3.2. Front
+Le front sera développé avec HTML, CSS et un peu de JavaScript pour l'interactivité (par exemple, les graphiques dynamiques pour le tableau de bord). Nous utiliserons Bootstrap pour une mise en page rapide et responsive (ou autre selon le groupe de travail).
 
-Utilisateurs : Informations de base, telles que Pseudo (utilisé pour rattacher les discussions à l'utilisateur), email, rôle (utilisateur ou administrateur), et état de connexion.
-Cryptomonnaies : Informations de chaque cryptomonnaie, incluant le nom, le symbole, le prix actuel et les variations.
-Votes de sentiment : Table enregistrant les votes de chaque utilisateur pour chaque cryptomonnaie. Limitation d’un vote par utilisateur et par cryptomonnaie toutes les 24 heures.
-Discussions : Table des commentaires associés à chaque cryptomonnaie, permettant de suivre les échanges.
-Favoris : Pour permettre aux utilisateurs de marquer les cryptomonnaies qu’ils souhaitent suivre de plus près.
-Relations entre tables :
+Les composants clés incluent :
+- Une page d'accueil avec le tableau de bord.
+- Des formulaires pour gérer les matières premières et enregistrer les productions.
+- Une page de rapports interactifs avec graphiques.
 
-Relation Utilisateurs-Votes : Permet de restreindre chaque utilisateur à un vote par cryptomonnaie et par jour.
-Relation Utilisateurs-Discussions : Associe chaque commentaire à l’utilisateur qui l’a posté.
-Relation Utilisateurs-Favoris : Permet aux utilisateurs de suivre leurs cryptomonnaies préférées et d'ajouter la quantité qu'ils possèdent pour chaque crypto.
-3.2. Frontend
-
-L’interface utilisateur est conçue pour être moderne, ergonomique et attrayante :
-
-Tableau de bord dynamique et interactif : Mise en avant des cryptomonnaies les plus populaires, affichage des tendances de vote, et des notifications en temps réel.
-Système de vote de sentiment : Boutons de vote (Up/Down) avec affichage de la tendance actuelle de la communauté (pourcentage de votes positifs et négatifs).
-Intégration de graphiques TradingView : Pour un suivi en temps réel des performances de chaque cryptomonnaie.
-Section Discussions : Pour chaque cryptomonnaie, une section de commentaires dynamique, où les utilisateurs connectés peuvent poster des messages et interagir avec les autres membres.
-Section Favoris : Un espace où les utilisateurs peuvent suivre leurs cryptomonnaies préférées, avec des alertes en cas de fortes variations de prix ou de changement de tendance communautaire.
 3.3. Backend
+Le backend sera développé avec Ruby on Rails, qui fournira une architecture MVC pour structurer proprement le projet. Nous créerons :
+- La gestion des matières premières (CRUD).
+- Le suivi des productions (ajout, édition).
+- Le calcul des indicateurs environnementaux.
 
-Le backend sera développé en Ruby on Rails, avec les technologies suivantes :
+3.4. Mes besoins techniques
+Mes compétences incluent :
+- Une maîtrise de Ruby on Rails.
+- Une bonne base en HTML, CSS.
+- Conception de bases de données relationnelles.
+- Maîtrise des indicateurs environnementaux
 
-Rails : Utilisé pour la gestion des requêtes utilisateur, la logique métier, et les fonctionnalités essentielles.
-API de cryptomonnaies : Intégration d’API externes comme CoinGecko pour récupérer les données en temps réel, et TradingView pour afficher les graphiques.
-4 Besoins techniques
+Compétences complémentaires nécessaires :
+- Un designer (front) pour rendre l'application plus intuitive (avec Boostrap ou HTML/CSS ou autre).
+- Expertise dans les graphiques dynamiques ou des bibliothèques.
+- Un autre développeur backend pour collaborer sur le code Ruby on Rails
 
-Pour compléter ce projet, l’équipe nécessitera les compétences suivantes :
+4. La version minimaliste mais fonctionnelle qu'il faut avoir livré la première semaine
+Pour le MVP, voici ce qui peut être présenté :
+1. Une base fonctionnelle pour ajouter et gérer les matières premières (CRUD).
+2. La possibilité d'enregistrer une production (exemple une recette) avec les quantités utilisées, produites, et gaspillées.
+3. Un calcul simple du taux de gaspillage (entrée - sortie = perte) et des émissions de CO₂ (calcul simple) à partir des données saisies.
+4. Un tableau de bord minimal affichant les indicateurs clés de manière statique.
 
-Développement Frontend : Expertise en JavaScript et CSS pour créer un tableau de bord interactif et intégrer les widgets TradingView.
-Développement Backend : Connaissance de Ruby on Rails pour la gestion des fonctionnalités principales et l'authentification.
-UI/UX Design : Un designer pour optimiser l’interface utilisateur, la rendant ergonomique et visuellement attrayante.
-Gestion de bases de données : Structurer les tables et assurer les relations pour des opérations efficaces entre utilisateurs, votes, et discussions.
-5 Version minimaliste mais fonctionnelle (MVP)
+5. La version que l'on présentera aux jury
+Pour la version finale que nous montrerons au jury, l’objectif est d’avoir une application simple mais fonctionnelle, tout en mettant en avant son potentiel. Voici ce qui est proposé :
 
-Pour le MVP (Minimum Viable Product), les fonctionnalités essentielles seront :
+Un tableau de bord simple et clair :
 
-Tableau de bord : Affichage des informations clés sur les cryptomonnaies et des graphiques en temps réel.
-Inscription et connexion utilisateur : Pour permettre aux utilisateurs de voter et de commenter.
-Section Discussions : Possibilité de commenter sous chaque cryptomonnaie.
-6 Modération des Messages
+Affiche les indicateurs principaux :
+taux de gaspillage global et émissions de CO₂ totales.
+Permet de visualiser rapidement les progrès réalisés grâce à l’application.
+Un suivi de production basique :
 
-La plateforme utilisera des expressions régulières (Regex) pour filtrer automatiquement les messages inappropriés avant leur publication. Dès qu'un utilisateur soumet un message, il sera analysé en temps réel pour détecter des mots ou expressions offensants (insultes, spam, etc.). Si un terme interdit est trouvé, le message sera bloqué immédiatement, et l'utilisateur sera averti de la violation.
+L’utilisateur peut enregistrer les matières premières utilisées et les déchets générés pour une production spécifique.
+Les calculs de gaspillage et des émissions de CO₂ associés sont affichés automatiquement.
+Gestion des matières premières :
 
-Cette méthode permettra de garantir un environnement de discussion respectueux sans retarder l'interaction des utilisateurs.
+Ajouter et modifier les matières premières, avec des informations clés comme le coût et les émissions de CO₂ unitaires.
+Rapports simplifiés :
 
-7 Version finale présentée aux jurys
+Une vue détaillée par production qui montre les matières utilisées, les déchets générés, et les émissions associées. Par exemple : "Pour la recette A, vous avez utilisé 10 kg de légumes, produit 1 kg de déchets (épluchures), soit 2 kg d'émissions CO₂."
 
-Pour la version finale, des fonctionnalités avancées seront ajoutées, notamment :
-
-Historique des votes de sentiment : Pour que les utilisateurs consultent les tendances de vote de la communauté.
-Notifications en temps réel : Alertes en fonction des variations de prix pour les cryptomonnaies en favoris.
-Analyses de tendances : Affichage des tendances générales de la communauté pour offrir une vision d'ensemble.
-Section Favoris : Gestion des cryptomonnaies favorites pour chaque utilisateur.
-8 Notre Mentor
-
-Mentor : Mickaël Gervais
-
-Pourquoi rejoindre ce projet
-Ce projet n’est pas simplement un exercice technique, mais une opportunité de contribuer à une communauté active de passionnés de cryptomonnaies. Vous pourrez travailler avec des technologies modernes et acquérir de l’expérience en développement fullstack avec un impact réel.
-
-En rejoignant cette équipe, vous aurez l’occasion d’explorer :
-
-Le développement backend avec Ruby on Rails pour la gestion des données et des utilisateurs. Le frontend interactif avec des composants en JavaScript et CSS. L'intégration d’API en temps réel, pour suivre les évolutions d’un marché dynamique. Ce projet sera un atout majeur pour votre portfolio, avec un produit final fonctionnel et engageant.
-
-En participant à ce projet, vous rejoignez une aventure collaborative, enrichissante et à impact réel.
+6. Notre mentor :
+Amélie Loulergue, ancienne de THP (session 2021) et actuellement architecte front web

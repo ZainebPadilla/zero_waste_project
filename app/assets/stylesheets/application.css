@@ -18,8 +18,8 @@
 
 
  .bg-gradient-custom {
-    background: linear-gradient(90deg, #1E90FF, #00BFFF); /* Remplacez par vos couleurs bleu */
-    color: white; /* Optionnel pour s'assurer que le texte reste lisible */
+    background: linear-gradient(90deg, #1E90FF, #00BFFF); 
+    color: white; 
   }
 
 
@@ -38,7 +38,7 @@
 .page-wrapper {
     display: flex;
     flex-direction: column;
-    min-height: 100vh; /* Assure que la page prend toute la hauteur */
+    min-height: 100vh; 
 }
 .container{
     flex: 1;

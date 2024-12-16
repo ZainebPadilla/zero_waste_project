@@ -66,13 +66,9 @@ end
     @production = current_user.productions.build(production_params)
 
     if @production.save
-<<<<<<< HEAD
-      # Save associated raw materials for the production
-=======
       flash[:notice] = "Production créée avec succès."
   
       # Enregistrer les matières premières associées à la production
->>>>>>> 580e784a469e7d2621c34dcd10f1a434a6224b50
       params[:production][:raw_materials]&.each do |_, raw_material_data|
         next if raw_material_data[:quantity_used].blank?
 
@@ -82,12 +78,7 @@ end
           quantity_used: raw_material_data[:quantity_used]
         )
       end
-<<<<<<< HEAD
-
-      redirect_to productions_path, notice: "Production successfully created."
-=======
       redirect_to productions_path
->>>>>>> 580e784a469e7d2621c34dcd10f1a434a6224b50
     else
       @raw_materials = RawMaterial.all
       render :new, status: :unprocessable_entity
@@ -95,19 +86,6 @@ end
   end
 
   def edit
-<<<<<<< HEAD
-    # Find the production to edit
-    @production = current_user.productions.find(params[:id])
-    @raw_materials = RawMaterial.all # Get all raw materials
-  end
-
-  def update
-    @production = current_user.productions.find(params[:id])
-
-    if @production.update(production_params)
-      redirect_to productions_path, notice: "Production successfully updated."
-    else
-=======
     @production = current_user.productions.find(params[:id]) 
     @raw_materials = RawMaterial.all 
   end
@@ -117,19 +95,13 @@ end
     if @production.update(production_params)
       redirect_to productions_path, notice: "Production mise à jour avec succès."
     else 
->>>>>>> 580e784a469e7d2621c34dcd10f1a434a6224b50
       @raw_materials = RawMaterial.all
       render :edit, status: :unprocessable_entity
     end
   end
 
   def destroy
-<<<<<<< HEAD
-    # Find the production and delete its raw materials
-    @production = current_user.productions.find(params[:id])
-=======
     @production = current_user.productions.find(params[:id]) 
->>>>>>> 580e784a469e7d2621c34dcd10f1a434a6224b50
     @production.production_raw_materials.destroy_all
     @production.destroy
 

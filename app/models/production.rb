@@ -6,7 +6,6 @@ class Production < ApplicationRecord
 
   accepts_nested_attributes_for :production_raw_materials #allows rails tomanage raw materiamls attributes in prroduction
 
-   # Validations
    validates :process_name, presence: true
  
 

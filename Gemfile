@@ -60,4 +60,3 @@ end
 
 
 gem 'chartkick'
-gem 'groupdate'

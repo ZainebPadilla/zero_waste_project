@@ -20,7 +20,7 @@
               <tr>
                 <td class="text-nowrap"><%= production.process_name %></td>
                 <td class="text-nowrap">
-                  <%= production.production_raw_materials.sum { |prm| prm.raw_material.waste_rate * prm.quantity_used } %> kg
+                  <%= production.production_raw_materials.sum { |prm| prm.raw_material.waste_rate * prm.quantity_used } %> 
                 </td>
               </tr>
             <% end %>
@@ -49,7 +49,7 @@
               <tr>
                 <td class="text-nowrap"><%= production.process_name %></td>
                 <td class="text-nowrap">
-                  <%= production.production_raw_materials.sum { |prm| prm.raw_material.co2_per_kg * prm.quantity_used * prm.raw_material.waste_rate } %> kg CO₂
+                  <%= production.production_raw_materials.sum { |prm| prm.raw_material.co2_per_kg * prm.quantity_used * prm.raw_material.waste_rate } %> 
                 </td>
               </tr>
             <% end %>

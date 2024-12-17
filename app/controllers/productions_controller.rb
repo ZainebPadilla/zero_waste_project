@@ -4,22 +4,18 @@ class ProductionsController < ApplicationController
 
    # Displays the list of productions for the current user
   def index
-    # Log the current user for debugging purposes
-    Rails.logger.info "Current user: #{current_user.inspect}"
-
+  
       # Fetch all productions belonging to the current user
     @productions = current_user&.productions
 
-   
-
-    @co2_data = @productions.map do |production|
-      # Calcul de la quantité totale de CO2 pour chaque production
-      total_co2 = production.production_raw_materials.sum do |prm|
-        prm.raw_material.co2_per_kg * prm.quantity_used * prm.raw_material.waste_rate
-      end
-      { name: production.process_name, value: total_co2 }
+   #for chartkick
+    @waste_data = @productions.map do |production|
+      [production.process_name, production.production_raw_materials.sum { |prm| prm.raw_material.waste_rate * prm.quantity_used }]
     end
-  end
+  
+    @co2_data = @productions.map do |production|
+      [production.process_name, production.production_raw_materials.sum { |prm| prm.raw_material.co2_per_kg * prm.quantity_used * prm.raw_material.waste_rate }]
+    end
 
  
     # Calculate the waste rate by process for each production

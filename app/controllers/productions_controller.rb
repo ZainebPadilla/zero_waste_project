@@ -1,75 +1,66 @@
 class ProductionsController < ApplicationController
-  before_action :authenticate_user! # Ensure the user is authenticated before any action
+  # Before any action in this controller, ensure the user is authenticated
+  before_action :authenticate_user!
 
+   # Displays the list of productions for the current user
   def index
-    # Get the current user's productions
+    # Log the current user for debugging purposes
+    Rails.logger.info "Current user: #{current_user.inspect}"
+
+      # Fetch all productions belonging to the current user
     @productions = current_user&.productions
   
+
+    # Log a warning if no productions are found
     if @productions.nil?
       Rails.logger.warn "Productions is nil"
     end
   
+    # If the productions list is empty, prepare an empty hash for waste rates and exit the method
     if @productions.blank?
       @waste_rates_by_process = {}
       @raw_material_data = {}
       @co2_data = {}
       return
     end
-
-    # Calculate waste rate for each process
-    # Waste rate = (total waste / total used) * 100
+  
+    # Calculate the waste rate by process for each production
     @waste_rates_by_process = @productions.includes(:production_raw_materials).each_with_object({}) do |production, hash|
-      total_waste = production.production_raw_materials.sum { |prm| prm.waste_generated.to_f }
-      total_used = production.production_raw_materials.sum { |prm| prm.quantity_used.to_f }
+      total_waste = 0
+      total_used = 0
+  
+      # Sum up waste and usage quantities for each raw material in the production
+      production.production_raw_materials.each do |raw_material|
+        total_waste += raw_material.waste_generated.to_f
+        total_used += raw_material.quantity_used.to_f
+      end
+  
+       # Compute waste rate as a percentage, or set to 0 if no materials were used
       hash[production.process_name] = total_used > 0 ? (total_waste / total_used) * 100 : 0
     end
-
-    # Calculate total quantity used for each raw material
-    # Group raw materials by name and sum their quantities
-    @raw_material_data = @productions.includes(:production_raw_materials).flat_map(&:production_raw_materials)
-                                     .group_by { |prm| prm.raw_material.name }
-                                     .transform_values { |prms| prms.sum(&:quantity_used) }
-    Rails.logger.info "Raw Material Data: #{@raw_material_data.inspect}"
-
-    # Calculate CO₂ emissions for each process
-    # CO₂ = co2_per_kg * quantity_used * waste_rate
-    @co2_data = @productions.each_with_object({}) do |production, hash|
-      hash[production.process_name] = production.production_raw_materials.sum do |prm|
-        if prm.raw_material.co2_per_kg && prm.raw_material.waste_rate
-          prm.raw_material.co2_per_kg * prm.quantity_used * prm.raw_material.waste_rate
-        else
-          0
-        end
-      end
-    end
-
-    # Waste quantity data (kg)
-@waste_data = @productions.each_with_object({}) do |production, hash|
-  waste_quantity = production.production_raw_materials.sum { |prm| prm.raw_material.waste_rate * prm.quantity_used }
-  hash[production.process_name] = waste_quantity
-end
-
-# CO₂ emissions data (kg)
-@co2_data = @productions.each_with_object({}) do |production, hash|
-  co2_emissions = production.production_raw_materials.sum { |prm| prm.raw_material.co2_per_kg * prm.quantity_used * prm.raw_material.waste_rate }
-  hash[production.process_name] = co2_emissions
-end
-    Rails.logger.info "CO2 Data: #{@co2_data.inspect}"
   end
 
+    # Render the form for creating a new production
   def new
+    # Initialize a new production object
     @production = Production.new
-    @raw_materials = RawMaterial.all.uniq # Get all unique raw materials
+   # Fetch all raw materials and remove duplicates 
+    @raw_materials = RawMaterial.all.uniq
   end
 
+
+   # Handle the creation of a new production
   def create
+
+     # Build a new production linked to the current user
     @production = current_user.productions.build(production_params)
 
     if @production.save
       flash[:notice] = "Production créée avec succès."
   
-      # Enregistrer les matières premières associées à la production
+      # Save associated raw materials if provided
       params[:production][:raw_materials]&.each do |_, raw_material_data|
+        # Skip if no quantity was specified for the raw material
         next if raw_material_data[:quantity_used].blank?
 
         ProductionRawMaterial.create!(

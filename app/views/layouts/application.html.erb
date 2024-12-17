@@ -4,6 +4,7 @@
 <head>
   <title><%= content_for(:title) || "Zero Waste Project" %></title>
   <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="<%= content_for(:meta_description) || 'Découvrez des solutions pour réduire vos déchets avec Zero Waste Project.' %>">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <%= csrf_meta_tags %>
   <%= csp_meta_tag %>

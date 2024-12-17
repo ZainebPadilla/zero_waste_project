@@ -4,23 +4,7 @@ class ProductionsController < ApplicationController
 
    # Displays the list of productions for the current user
   def index
-    # Log the current user for debugging purposes
-    Rails.logger.info "Current user: #{current_user.inspect}"
-
-      # Fetch all productions belonging to the current user
     @productions = current_user&.productions
-  
-
-    # Log a warning if no productions are found
-    if @productions.nil?
-      Rails.logger.warn "Productions is nil"
-    end
-  
-    # If the productions list is empty, prepare an empty hash for waste rates and exit the method
-    if @productions.blank?
-      @waste_rates_by_process = {}
-      return
-    end
   
     # Calculate the waste rate by process for each production
     @waste_rates_by_process = @productions.includes(:production_raw_materials).each_with_object({}) do |production, hash|
@@ -38,7 +22,7 @@ class ProductionsController < ApplicationController
     end
   end
 
-    # Render the form for creating a new production
+  
   def new
     # Initialize a new production object
     @production = Production.new
@@ -47,10 +31,10 @@ class ProductionsController < ApplicationController
   end
 
 
-   # Handle the creation of a new production
+  # Handles the creation of a new production
   def create
 
-     # Build a new production linked to the current user
+     # Builds a new production linked to the current user
     @production = current_user.productions.build(production_params)
   
     if @production.save

@@ -1,63 +1,40 @@
-<div class="container-fluid mt-5">
-</div>
-<div class="row">
-  <!-- Waste quantity table -->
-  <div class="col-md-6">
-    <div class="card mb-4">
-      <div class="card-header bg-primary  text-white">
-        Quantité Gaspillée (kg)
-      </div>
-      <div class="card-body">
-        <table class="table table-striped table-bordered table-hover table-sm">
-          <thead class="thead-dark">
-            <tr>
-              <th>Processus</th>
-              <th>Quantité Gaspillée (kg)</th>
-            </tr>
-          </thead>
-          <tbody>
-            <% @productions.each do |production| %>
-              <tr>
-                <td class="text-nowrap"><%= production.process_name %></td>
-                <td class="text-nowrap">
-                  <%= production.production_raw_materials.sum { |prm| prm.raw_material.waste_rate * prm.quantity_used } %> 
-                </td>
-              </tr>
-            <% end %>
-          </tbody>
-        </table>
+  <%= javascript_include_tag 'https://cdn.jsdelivr.net/npm/chart.js' %>
+  
+  <%= javascript_include_tag 'https://cdn.jsdelivr.net/npm/chartkick' %>
+
+
+  
+<div class="container-fluid">
+  <div class="row">
+    <!-- Graphique pour la quantité gaspillée -->
+    <div class="col-md-6">
+      <div class="card mb-4">
+        <div class="card-header bg-success text-white">
+          Graphique - Quantité Gaspillée (kg)
+        </div>
+        <div class="card-body">
+          <%= column_chart @waste_data, 
+                xtitle: "Processus", 
+                ytitle: "Quantité Gaspillée (kg)",
+                colors: ["#007bff"] %>
+        </div>
       </div>
     </div>
-  </div>
 
-  <!-- CO2 emission table -->
-  <div class="col-md-6">
-    <div class="card mb-4">
-      <div class="card-header bg-primary text-white">
-        Émissions CO₂ (kg)
-      </div>
-      <div class="card-body">
-        <table class="table table-striped table-bordered table-hover table-sm">
-          <thead class="thead-dark">
-            <tr>
-              <th>Processus</th>
-              <th>Émissions CO₂ (kg)</th>
-            </tr>
-          </thead>
-          <tbody>
-            <% @productions.each do |production| %>
-              <tr>
-                <td class="text-nowrap"><%= production.process_name %></td>
-                <td class="text-nowrap">
-                  <%= production.production_raw_materials.sum { |prm| prm.raw_material.co2_per_kg * prm.quantity_used * prm.raw_material.waste_rate } %> 
-                </td>
-              </tr>
-            <% end %>
-          </tbody>
-        </table>
+    <!-- Graphique pour les émissions CO2 -->
+    <div class="col-md-6">
+      <div class="card mb-4">
+        <div class="card-header bg-success text-white">
+          Graphique - Émissions CO₂ (kg)
+        </div>
+        <div class="card-body">
+          <%= column_chart @co2_data, 
+                xtitle: "Processus", 
+                ytitle: "Émissions CO₂ (kg)",
+                colors: ["#28a745"] %>
+        </div>
       </div>
     </div>
   </div>
 </div>
-
 

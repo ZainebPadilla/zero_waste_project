@@ -4,24 +4,20 @@ class ProductionsController < ApplicationController
 
    # Displays the list of productions for the current user
   def index
-    # Log the current user for debugging purposes
-    Rails.logger.info "Current user: #{current_user.inspect}"
-
+  
       # Fetch all productions belonging to the current user
     @productions = current_user&.productions
-  
 
-    # Log a warning if no productions are found
-    if @productions.nil?
-      Rails.logger.warn "Productions is nil"
+   #for chartkick
+    @waste_data = @productions.map do |production|
+      [production.process_name, production.production_raw_materials.sum { |prm| prm.raw_material.waste_rate * prm.quantity_used }]
     end
   
-    # If the productions list is empty, prepare an empty hash for waste rates and exit the method
-    if @productions.blank?
-      @waste_rates_by_process = {}
-      return
+    @co2_data = @productions.map do |production|
+      [production.process_name, production.production_raw_materials.sum { |prm| prm.raw_material.co2_per_kg * prm.quantity_used * prm.raw_material.waste_rate }]
     end
-  
+
+ 
     # Calculate the waste rate by process for each production
     @waste_rates_by_process = @productions.includes(:production_raw_materials).each_with_object({}) do |production, hash|
       total_waste = 0
@@ -52,7 +48,7 @@ class ProductionsController < ApplicationController
 
      # Build a new production linked to the current user
     @production = current_user.productions.build(production_params)
-  
+
     if @production.save
       flash[:notice] = "Production créée avec succès."
   
@@ -60,7 +56,7 @@ class ProductionsController < ApplicationController
       params[:production][:raw_materials]&.each do |_, raw_material_data|
         # Skip if no quantity was specified for the raw material
         next if raw_material_data[:quantity_used].blank?
-  
+
         ProductionRawMaterial.create!(
           production: @production,
           raw_material_id: raw_material_data[:raw_material_id],
@@ -73,7 +69,6 @@ class ProductionsController < ApplicationController
       render :new, status: :unprocessable_entity
     end
   end
-  
 
   def edit
     @production = current_user.productions.find(params[:id]) 
@@ -94,13 +89,15 @@ class ProductionsController < ApplicationController
     @production = current_user.productions.find(params[:id]) 
     @production.production_raw_materials.destroy_all
     @production.destroy
-    redirect_to productions_path, notice: "Production supprimée avec succès."
+
+    redirect_to productions_path, notice: "Production successfully deleted."
   end
 
   private
 
+  # Permit the necessary production parameters
   def production_params
-    params.require(:production).permit(:process_name, production_raw_materials_attributes: [:id, :quantity_used])# raw raw_materials_attributes allows to uptade raw materials quantity and not just the process_name)
+    params.require(:production).permit(:process_name, production_raw_materials_attributes: [:id, :quantity_used])
   end
-
 end
+

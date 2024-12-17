@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get "chartkick/index"
   get "pages/team"
   get "pages/contact"
   get 'legal', to: 'pages#legal'

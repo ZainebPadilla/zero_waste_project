@@ -1,0 +1,2 @@
+module ChartkickHelper
+end

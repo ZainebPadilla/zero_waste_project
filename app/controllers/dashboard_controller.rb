@@ -4,8 +4,8 @@ class DashboardController < ApplicationController
   end
 
   def index
-    @productions = Production.all
-
+    @productions = current_user&.productions
+    
     @waste_data = @productions.map do |production|
       [production.process_name, production.production_raw_materials.sum { |prm| prm.raw_material.waste_rate * prm.quantity_used }]
     end

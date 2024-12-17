@@ -12,14 +12,13 @@
           <h1>ECO²</h1>
           <p>Calculer automatiquement les émissions de CO₂ associées aux déchets générés, et des indicateurs clés de performance environnementale.</p>
           <p>
-            <a href="#cardSection" class="btn btn-primary">En savoir plus</a>
+            <%= link_to 'En savoir plus', '#cardSection', class: 'btn btn-primary' %>
           </p>
         </div>
       </div>
     </div>
   </div>
 </div>
-
 <br>
 <br><br><br>
 </div>
@@ -62,6 +61,10 @@
   <div class="progress-bar bg-success" role="progressbar" style="width: 30%;" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100"></div>
   <div class="progress-bar bg-info" role="progressbar" style="width: 20%;" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
 </div>
+
+
+
+
 <br>
 <br>
 
@@ -69,10 +72,12 @@
   <div class="row align-items-center">
     <div class="col-md-4 text-center">
       <%= image_tag("co2-6317011_640.jpg", 
-          class: "img-fluid rounded-circle shadow-lg border border-4 border-white", 
-          style: "max-width: 300px; height: 300px; object-fit: cover;",
+          class: "img-fluid shadow-lg border border-4 border-white", 
+          style: "max-width: 300px; height: 300px; object-fit: content; border-radius: 150px 150px 0 150px;",
           alt: "Description de l'image") 
       %>
+
+
     </div>
     <div class="col-md-8">
       <h1 class="display-4 text-white">Réduire</h1>

@@ -84,13 +84,4 @@
 <% end %>
 
 
-<%= column_chart({"Processus 1" => 10, "Processus 2" => 20}, library: { title: { text: "Test Chart", display: true }, legend: { position: "bottom" } }) %>
-
-
-<div>
-  <%= column_chart({"Test 1" => 1, "Test 2" => 2}) %>
-</div>
-
-<%= column_chart({"Test 1" => 1, "Test 2" => 2}) %>
-
-
+<%= column_chart @co2_data, library: { title: { text: "Émissions de CO₂ (kg)", display: true }, legend: { position: "bottom" } } %>

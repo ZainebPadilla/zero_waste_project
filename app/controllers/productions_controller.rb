@@ -9,21 +9,19 @@ class ProductionsController < ApplicationController
 
       # Fetch all productions belonging to the current user
     @productions = current_user&.productions
-  
 
-    # Log a warning if no productions are found
-    if @productions.nil?
-      Rails.logger.warn "Productions is nil"
+   
+
+    @co2_data = @productions.map do |production|
+      # Calcul de la quantité totale de CO2 pour chaque production
+      total_co2 = production.production_raw_materials.sum do |prm|
+        prm.raw_material.co2_per_kg * prm.quantity_used * prm.raw_material.waste_rate
+      end
+      { name: production.process_name, value: total_co2 }
     end
-  
-    # If the productions list is empty, prepare an empty hash for waste rates and exit the method
-    if @productions.blank?
-      @waste_rates_by_process = {}
-      @raw_material_data = {}
-      @co2_data = {}
-      return
-    end
-  
+  end
+
+ 
     # Calculate the waste rate by process for each production
     @waste_rates_by_process = @productions.includes(:production_raw_materials).each_with_object({}) do |production, hash|
       total_waste = 0

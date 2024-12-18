@@ -46,7 +46,7 @@
           </li>
           <% if user_signed_in? %>
           <li class="nav-item">
-            <%= link_to "Mon Dashboard #{current_user.first_name}", dashboard_index_path, class: "nav-link" %>
+            <%= link_to "Mon Tableau de bord #{current_user.first_name}", dashboard_index_path, class: "nav-link" %>
           </li>
           <li class="nav-item">
             <%= link_to 'Mes Productions', productions_path, class: 'btn btn-link nav-link' %>

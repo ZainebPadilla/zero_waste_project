@@ -4,7 +4,7 @@ class ProductionRawMaterial < ApplicationRecord
 
   validates :quantity_used, numericality: { greater_than_or_equal_to: 0 }
 
-
+  #Method to calculate the waste rate as a percentage
   def waste_rate
     return 0 if quantity_used.to_f.zero? # Éviter la division par zéro
     (waste_generated.to_f / quantity_used.to_f) * 100
@@ -12,7 +12,7 @@ class ProductionRawMaterial < ApplicationRecord
 
    # Method to calculate generated waste
   def waste_generated
-    return 0 if quantity_used.to_f.zero? # Éviter la division par zéro
+    return 0 if quantity_used.to_f.zero? # Avoid division by zero
     (quantity_used.to_f * raw_material.waste_rate).round(2)
   end
 end

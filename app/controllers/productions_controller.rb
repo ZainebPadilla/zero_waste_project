@@ -51,9 +51,9 @@ class ProductionsController < ApplicationController
       flash[:notice] = "Production créée avec succès."
   
       # Save associated raw materials if provided
-      params[:production][:raw_materials]&.each do |_, raw_material_data|
+      params[:production][:raw_materials]&.each do |_, raw_material_data| # |_ to focuse only on the value (raw_material_data).
         # Skip if no quantity was specified for the raw material
-        next if raw_material_data[:quantity_used].blank?
+        next if raw_material_data[:quantity_used].blank? #ignore when raw materials or quantity used are nil
 
         ProductionRawMaterial.create!(
           production: @production,

@@ -3,6 +3,6 @@ document.addEventListener("DOMContentLoaded", function () {
   alerts.forEach(alert => {
     setTimeout(() => {
       alert.classList.add("hide");
-    }, 5000); // 5 secondes
+    }, 5000); // 5 seconds
   });
 });

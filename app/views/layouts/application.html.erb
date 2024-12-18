@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 
 <head>
   <title><%= content_for(:title) || "Zero Waste Project" %></title>
@@ -14,6 +14,8 @@
   <link rel="manifest" href="/manifest.json">
   <link rel="apple-touch-icon" href="/icon.png">
 
+
+ 
   <%= javascript_importmap_tags %>
   <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
   <%= favicon_link_tag 'logoeco2.png' %>
@@ -21,7 +23,7 @@
 
 <body>
   <% flash.each do |key, message| %>
-  <div class="alert alert-<%= key == 'success' ? 'success' : 'danger' %>">
+  <div class="alert alert-<%= key == 'notice' ? 'success' : 'danger' %>">
     <%= message %>
   </div>
   <% end %>

@@ -8,12 +8,14 @@ class Production < ApplicationRecord
 
    validates :process_name, presence: true
  
+   before_save :calculate_co2_emissions
 
   def quantity_wasted
-    (quantity_used * raw_material.waste_rate).round(2) #2 for 2 décimal
+    production_raw_materials.sum { |prm| prm.raw_material.waste_rate * prm.quantity_used }.round(2) #2 for 2 décimal
   end
 
   def co2_emissions
-    (quantity_wasted * raw_material.co2_per_kg).round(2) 
+    production_raw_materials.sum { |prm| prm.raw_material.co2_per_kg * prm.quantity_used * prm.raw_material.waste_rate }.round(2) 
   end
+  
 end

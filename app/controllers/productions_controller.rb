@@ -36,7 +36,7 @@ class ProductionsController < ApplicationController
 
      # Builds a new production linked to the current user
     @production = current_user.productions.build(production_params)
-  
+
     if @production.save
       flash[:notice] = "Production créée avec succès."
   
@@ -44,7 +44,7 @@ class ProductionsController < ApplicationController
       params[:production][:raw_materials]&.each do |_, raw_material_data|
         # Skip if no quantity was specified for the raw material
         next if raw_material_data[:quantity_used].blank?
-  
+
         ProductionRawMaterial.create!(
           production: @production,
           raw_material_id: raw_material_data[:raw_material_id],
@@ -57,7 +57,6 @@ class ProductionsController < ApplicationController
       render :new, status: :unprocessable_entity
     end
   end
-  
 
   def edit
     @production = current_user.productions.find(params[:id]) 
@@ -78,13 +77,15 @@ class ProductionsController < ApplicationController
     @production = current_user.productions.find(params[:id]) 
     @production.production_raw_materials.destroy_all
     @production.destroy
-    redirect_to productions_path, notice: "Production supprimée avec succès."
+
+    redirect_to productions_path, notice: "Production successfully deleted."
   end
 
   private
 
+  # Permit the necessary production parameters
   def production_params
-    params.require(:production).permit(:process_name, production_raw_materials_attributes: [:id, :quantity_used])# raw raw_materials_attributes allows to uptade raw materials quantity and not just the process_name)
+    params.require(:production).permit(:process_name, production_raw_materials_attributes: [:id, :quantity_used])
   end
-
 end
+

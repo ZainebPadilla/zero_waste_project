@@ -2,17 +2,17 @@ class ProductionsController < ApplicationController
   # Before any action in this controller, ensure the user is authenticated
   before_action :authenticate_user!
 
-   # Displays the list of productions for the current user
+    # Displays the list of productions for the current user
   def index
-    @productions = current_user&.productions
-  #for chartkick
-  @waste_data = @productions.map do |production|
-    [production.process_name, production.production_raw_materials.sum { |prm| prm.raw_material.waste_rate * prm.quantity_used }]
-  end
+      @productions = current_user&.productions
+    #for chartkick
+    @waste_data = @productions.map do |production|
+      [production.process_name, production.production_raw_materials.sum { |prm| prm.raw_material.waste_rate * prm.quantity_used }]
+    end
 
-  @co2_data = @productions.map do |production|
-    [production.process_name, production.production_raw_materials.sum { |prm| prm.raw_material.co2_per_kg * prm.quantity_used * prm.raw_material.waste_rate }]
-  end
+    @co2_data = @productions.map do |production|
+      [production.process_name, production.production_raw_materials.sum { |prm| prm.raw_material.co2_per_kg * prm.quantity_used * prm.raw_material.waste_rate }]
+    end
 
 
 

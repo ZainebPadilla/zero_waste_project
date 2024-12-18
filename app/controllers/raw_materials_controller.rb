@@ -40,10 +40,11 @@ class RawMaterialsController < ApplicationController
         private
       
         def set_raw_material
-          @raw_material = RawMaterial.find(params[:id])
+          @raw_material = RawMaterial.find(params[:id]) # Fetch the raw material by ID from the params
         end
       
+        #Allow only specific attributes to be submitted via forms
         def raw_material_params
-          params.require(:raw_material).permit(:name, :description, :quantity, :price)
+          params.require(:raw_material).permit(:name, :description, :quantity)
         end
 end      

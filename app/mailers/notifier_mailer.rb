@@ -1,7 +1,7 @@
 class NotifierMailer < ApplicationMailer
 
-    default from: "kontikids@icloud.com", # Remplacez par votre adresse d'expéditeur validée sur Mailjet
-    to: "zainebt16@gmail.com" # Remplacez par votre adresse de réception
+    default from: "kontikids@icloud.com", # validated sender address on Mailjet
+    to: "zainebt16@gmail.com" # receiving address
 
   def simple_message(first_name, last_name, email, message)
   mail(

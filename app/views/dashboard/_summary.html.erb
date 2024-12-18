@@ -5,7 +5,7 @@
 
  <div class="container-fluid">
   <div class="row">
-    <!-- Graphique pour la quantité gaspillée -->
+    <!-- graph for the waste quantity -->
     <div class="col-md-6">
       <div class="card mb-4">
         <div class="card-header bg-success text-white text-center">
@@ -17,7 +17,7 @@
       </div>
     </div>
 
-    <!-- Graphique pour les émissions CO2 -->
+    <!-- graphic for the CO2 emission -->
     <div class="col-md-6">
       <div class="card mb-4">
         <div class="card-header bg-success text-white text-center">
@@ -43,7 +43,7 @@
         <div class="card-body">
           <%= bar_chart @combined_data.map { |data| { name: data[:process], data: { "Waste (kg)" => data[:waste], "CO₂ Emissions (kg)" => data[:co2] } } },
                          colors: ["#007bff", "#28a745"],
-                         stacked: true, # Empile les barres pour chaque process
+                         stacked: true, 
                          library: {
                            yAxis: [
                              { title: { text: "Quantité Gaspillée (kg)" }, opposite: true },

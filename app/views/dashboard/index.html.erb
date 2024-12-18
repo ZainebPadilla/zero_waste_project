@@ -1,21 +1,22 @@
- <div class="container mt-3">
+<div class="container mt-3">
   <h1 class="display 4 mt-5 mb-0 text-center">Tableau de bord</h1>
 
-    <div class=" container-fluid mt-5">
-      <div class="row mb-4">
-        <div class="col-12 d-flex justify-content-end mb-0">
+  <div class=" container-fluid mt-5">
+    <div class="row mb-4">
+      <div class="col-12 d-flex justify-content-end mb-0 pr-3">
 
-          <%= link_to image_tag("icone_prod.png", alt: "Accéder a une nouvelle production", class: "icon mx-2"), new_production_path, title: "Accéder a une nouvelle production" %>
-          <%= link_to image_tag("analytic.png", alt: "Accéder au tableau de prod", class: "icon mx-2"), productions_path, title: "Accéder au tableau de prod" %>
-          <%= link_to image_tag("detective.png", alt: "Accéder au profil utilisateur", class: "icon mx-2"), edit_user_registration_path, title: "Accéder au profil utilisateur" %>
-          <%= link_to image_tag("exit.png", alt: "Retour à la page d'accueil", class: "icon mx-2"), root_path, title: "Retour à la page d'accueil" %>
-        </div>
-        </div>
-        <div class="margin-top">
-          <div class=" col-12">
-            <%= render partial: 'summary' %>
-          </div>
-        </div>
+        <%= link_to image_tag("icone_prod.png", alt: "Accéder a une nouvelle production", class: "icon mx-2"), new_production_path, title: "Accéder a une nouvelle production" %>
+        <%= link_to image_tag("analytic.png", alt: "Accéder au tableau de prod", class: "icon mx-2"), productions_path, title: "Accéder au tableau de prod" %>
+        <%= link_to image_tag("detective.png", alt: "Accéder au profil utilisateur", class: "icon mx-2"), edit_user_registration_path, title: "Accéder au profil utilisateur" %>
+        <%= link_to image_tag("icons8-sortie.gif", alt: "Retour à la page d'accueil", class: "icon mx-2"), root_path, title: "Retour à la page d'accueil" %>
+      </div>
+      <div> <br> </div>
+    </div>
+    <div class="margin-top">
+      <div class=" col-12">
+        <%= render partial: 'summary' %>
       </div>
     </div>
- </div>
+  </div>
+</div>
+</div>

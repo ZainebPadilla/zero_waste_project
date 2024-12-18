@@ -3,38 +3,56 @@
   <%= javascript_include_tag 'https://cdn.jsdelivr.net/npm/chartkick' %>
 
 
-  
-<div class="container-fluid">
+ <div class="container-fluid">
   <div class="row">
-    <!-- Graphique pour la quantité gaspillée -->
+    <!-- graph for the waste quantity -->
     <div class="col-md-6">
       <div class="card mb-4">
-        <div class="card-header bg-success text-white">
-          Graphique - Quantité Gaspillée (kg)
+        <div class="card-header bg-success text-white text-center">
+          Quantité Gaspillée (kg) par process
         </div>
         <div class="card-body">
-          <%= column_chart @waste_data, 
-                xtitle: "Processus", 
-                ytitle: "Quantité Gaspillée (kg)",
-                colors: ["#007bff"] %>
+          <%= column_chart @waste_data, colors: ["#007bff"], legend: true %> 
         </div>
       </div>
     </div>
 
-    <!-- Graphique pour les émissions CO2 -->
+    <!-- graphic for the CO2 emission -->
     <div class="col-md-6">
       <div class="card mb-4">
-        <div class="card-header bg-success text-white">
-          Graphique - Émissions CO₂ (kg)
+        <div class="card-header bg-success text-white text-center">
+          Émissions CO₂ (kg) par process
         </div>
         <div class="card-body">
-          <%= column_chart @co2_data, 
-                xtitle: "Processus", 
-                ytitle: "Émissions CO₂ (kg)",
-                colors: ["#28a745"] %>
+          <%= pie_chart @co2_data, colors: @co2_colors, legend: true %> 
         </div>
       </div>
     </div>
   </div>
 </div>
 
+
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card mb-4">
+        <div class="card-header bg-success text-white text-center">
+          Quantité Gaspillée et Émissions CO₂ par Process
+        </div>
+        <div class="card-body">
+          <%= bar_chart @combined_data.map { |data| { name: data[:process], data: { "Waste (kg)" => data[:waste], "CO₂ Emissions (kg)" => data[:co2] } } },
+                         colors: ["#007bff", "#28a745"],
+                         stacked: true, 
+                         library: {
+                           yAxis: [
+                             { title: { text: "Quantité Gaspillée (kg)" }, opposite: true },
+                             { title: { text: "Émissions CO₂ (kg)" } }
+                           ],
+                           title: { text: 'Quantité Gaspillée et Émissions CO₂ par Process' }
+                         } %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -2,23 +2,21 @@ class ProductionsController < ApplicationController
   # Before any action in this controller, ensure the user is authenticated
   before_action :authenticate_user!
 
-   # Displays the list of productions for the current user
+    # Displays the list of productions for the current user
   def index
-  
-      # Fetch all productions belonging to the current user
-    @productions = current_user&.productions
-
-   #for chartkick
+      @productions = current_user&.productions
+    #for chartkick
     @waste_data = @productions.map do |production|
       [production.process_name, production.production_raw_materials.sum { |prm| prm.raw_material.waste_rate * prm.quantity_used }]
     end
-  
+
     @co2_data = @productions.map do |production|
       [production.process_name, production.production_raw_materials.sum { |prm| prm.raw_material.co2_per_kg * prm.quantity_used * prm.raw_material.waste_rate }]
     end
 
- 
-    # Calculate the waste rate by process for each production
+
+
+    # Calculation of the waste rate by process for each production
     @waste_rates_by_process = @productions.includes(:production_raw_materials).each_with_object({}) do |production, hash|
       total_waste = 0
       total_used = 0
@@ -34,7 +32,7 @@ class ProductionsController < ApplicationController
     end
   end
 
-    # Render the form for creating a new production
+  
   def new
     # Initialize a new production object
     @production = Production.new
@@ -43,19 +41,19 @@ class ProductionsController < ApplicationController
   end
 
 
-   # Handle the creation of a new production
+  # Handles the creation of a new production
   def create
 
-     # Build a new production linked to the current user
+     # Builds a new production linked to the current user
     @production = current_user.productions.build(production_params)
 
     if @production.save
       flash[:notice] = "Production créée avec succès."
   
       # Save associated raw materials if provided
-      params[:production][:raw_materials]&.each do |_, raw_material_data|
+      params[:production][:raw_materials]&.each do |_, raw_material_data| # |_ to focuse only on the value (raw_material_data).
         # Skip if no quantity was specified for the raw material
-        next if raw_material_data[:quantity_used].blank?
+        next if raw_material_data[:quantity_used].blank? #ignore when raw materials or quantity used are nil
 
         ProductionRawMaterial.create!(
           production: @production,

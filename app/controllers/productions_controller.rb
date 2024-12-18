@@ -18,7 +18,7 @@ class ProductionsController < ApplicationController
     end
 
  
-    # Calculate the waste rate by process for each production
+    # Calculation the waste rate by process for each production
     @waste_rates_by_process = @productions.includes(:production_raw_materials).each_with_object({}) do |production, hash|
       total_waste = 0
       total_used = 0

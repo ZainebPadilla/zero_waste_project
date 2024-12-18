@@ -5,8 +5,18 @@ class ProductionsController < ApplicationController
    # Displays the list of productions for the current user
   def index
     @productions = current_user&.productions
-  
-    # Calculate the waste rate by process for each production
+  #for chartkick
+  @waste_data = @productions.map do |production|
+    [production.process_name, production.production_raw_materials.sum { |prm| prm.raw_material.waste_rate * prm.quantity_used }]
+  end
+
+  @co2_data = @productions.map do |production|
+    [production.process_name, production.production_raw_materials.sum { |prm| prm.raw_material.co2_per_kg * prm.quantity_used * prm.raw_material.waste_rate }]
+  end
+
+
+
+    # Calculation of the waste rate by process for each production
     @waste_rates_by_process = @productions.includes(:production_raw_materials).each_with_object({}) do |production, hash|
       total_waste = 0
       total_used = 0

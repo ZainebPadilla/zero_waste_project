@@ -1,0 +1,27 @@
+<div class="container">
+  <br>
+  <h1 class="text-center">Actualités Environnementales</h1> <br>
+  
+  <% if @error_message %>
+    <div class="alert alert-danger">
+      <%= @error_message %>
+    </div>
+  <% end %>
+
+  <div class="row">
+    <% @articles.each do |article| %>
+      <div class="col-md-4">
+        <div class="card mb-4">
+          <% if article['urlToImage'] %>
+            <img src="<%= article['urlToImage'] %>" class="card-img-top" alt="Image de l'article">
+          <% end %>
+          <div class="card-body">
+            <h5 class="card-title"><%= article['title'] %></h5>
+            <p class="card-text"><%= article['description'] %></p>
+            <a href="<%= article['url'] %>" target="_blank" class="btn btn-primary">Lire l'article</a>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

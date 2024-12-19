@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+ 
+  get 'news', to: 'pages#news'
   get "chartkick/index"
   get "pages/team"
   get "pages/contact"
@@ -12,10 +14,10 @@ Rails.application.routes.draw do
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
-  # CRUD pour les productions
+  # CRUD for production
   resources :productions
 
-  # CRUD pour les matières premières
+  # CRUD for raw materials
   resources :raw_materials
 
   

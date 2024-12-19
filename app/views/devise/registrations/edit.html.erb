@@ -17,7 +17,7 @@
           </div>
 
           <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-          <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+          <div>En attente de confirmation pour : <%= resource.unconfirmed_email %></div>
           <% end %>
 
           <div class="mb-4">
@@ -27,7 +27,6 @@
             <em><%= @minimum_password_length %> caractères minimum</em>
             <% end %>
           </div>
-
 
           <div class="mb-4">
             <%= f.label :password_confirmation, "Confirmez le mot de passe", class: "form-label" %>

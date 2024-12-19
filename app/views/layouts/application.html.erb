@@ -44,6 +44,9 @@
           <li class="nav-item">
             <%= link_to 'Accueil', root_path, class: 'nav-link active', 'aria-current': 'page' %>
           </li>
+          <li class="nav-item">
+          <%= link_to 'Actualité', news_path, class: 'nav-link' %>
+        </li>
           <% if user_signed_in? %>
           <li class="nav-item">
             <%= link_to "Mon Tableau de bord #{current_user.first_name}", dashboard_index_path, class: "nav-link" %>

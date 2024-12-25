@@ -113,6 +113,9 @@ Rails.application.configure do
     authentication: :plain,
     enable_starttls_auto: true
   }
+
+  Rails.application.routes.default_url_options[:host] = 'zero-waste-app-3239108559bd.herokuapp.com'
+
   
 
 end

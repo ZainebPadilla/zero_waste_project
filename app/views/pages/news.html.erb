@@ -10,15 +10,16 @@
 
   <div class="row">
     <% @articles.each do |article| %>
+    <% next unless article['urlToImage'].present? %> <!-- allows only articles with image -->
       <div class="col-md-4">
         <div class="card mb-4">
           <% if article['urlToImage'] %>
-            <img src="<%= article['urlToImage'] %>" class="card-img-top" alt="Image de l'article">
+            <%= image_tag article['urlToImage'], class: 'card-img-top', alt: 'Image de l\'article' %>
           <% end %>
           <div class="card-body">
             <h5 class="card-title"><%= article['title'] %></h5>
             <p class="card-text"><%= article['description'] %></p>
-            <a href="<%= article['url'] %>" target="_blank" class="btn btn-primary">Lire l'article</a>
+            <%= link_to 'Lire l\'article', article['url'], target: '_blank', class: 'btn btn-primary' %>
           </div>
         </div>
       </div>

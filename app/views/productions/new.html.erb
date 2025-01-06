@@ -7,6 +7,7 @@
     <div class="col-md-8">
       <%= link_to "Retour", :back, class: "btn btn-secondary btn-sm" %>
       <%= form_with(model: @production, class: "p-4 bg-default rounded shadow") do |form| %>
+
       <% if @production.errors[:process_name].any? %>
       <div class="alert alert-danger mb-4">
         <% @production.errors[:process_name].each do |error| %>
@@ -31,7 +32,12 @@
           <div class="form-group ms-3">
             <%= hidden_field_tag "production[raw_materials][#{raw_material.id}][raw_material_id]", raw_material.id %>
             <%= label_tag "production[raw_materials][#{raw_material.id}][quantity_used]", "Quantité (kg)", class: "visually-hidden" %>
-            <%= number_field_tag "production[raw_materials][#{raw_material.id}][quantity_used]", nil, step: 0.01, placeholder: "Quantité (kg)", class: "form-control" %>
+
+            <%= number_field_tag "production[raw_materials][#{raw_material.id}][quantity_used]", 
+                @submitted_quantities[raw_material.id.to_s], 
+                step: 0.01, 
+                placeholder: "Quantité (kg)", 
+                class: "form-control" %>
           </div>
         </details>
         <% end %>
@@ -48,3 +54,4 @@
     </div>
   </div>
 </div>
+

@@ -36,8 +36,10 @@ class ProductionsController < ApplicationController
   def new
     # Initialize a new production object
     @production = Production.new
-   # Fetch all raw materials and remove duplicates 
+    # Fetch all raw materials and remove duplicates 
     @raw_materials = RawMaterial.all.uniq
+    # Initialize an empty hash
+    @submitted_quantities = {} 
   end
 
 
@@ -63,7 +65,15 @@ class ProductionsController < ApplicationController
       end
       redirect_to productions_path
     else
+      # Populate raw materials and preserve submitted quantities
       @raw_materials = RawMaterial.all
+
+      # Preserve submitted quantities
+      @submitted_quantities = params[:production][:raw_materials]&.transform_values do |data|
+        data[:quantity_used]
+      end || {}
+
+
       render :new, status: :unprocessable_entity
     end
   end

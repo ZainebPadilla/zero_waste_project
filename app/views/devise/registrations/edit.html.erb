@@ -3,72 +3,84 @@
 <div class="container mt-5 mb-5">
   <div class="row justify-content-center">
     <div class="col-md-6">
-      <div class="card shadow-sm">
-        <div class="card-header text-center bg-success text-white">
-          <h2>Modifier mon profil</h2>
+      <!-- Card 1: Company Name -->
+      <div class="card shadow-sm mb-4">
+        <div class="card-header text-center bg-primary text-white">
+          <h4>Nom de l'entreprise</h4>
         </div>
-
         <div class="card-body">
           <%= form_with(model: resource, as: resource_name, url: registration_path(resource_name), method: :put, local: true, class: "form") do |f| %>
-
-
-          <div class="form-group">
-            <%= f.label :company_name, "Nom de l'entreprise", class: "form-label " %>
-            <%= f.text_field :company_name, class: "form-control w-50", placeholder: "Entrez le nom de votre entreprise" %>
-          </div>
-
-          <hr class="my-4">
-
-          <div class="mb-4">
-            <%= f.label :email, "Adresse e-mail", class: "form-label" %>
-            <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control w-50" %>
-          </div>
-
-          <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-          <div>En attente de confirmation pour : <%= resource.unconfirmed_email %></div>
+            <!-- Input field for company name -->
+            <div class="form-group">
+              <%= f.label :company_name, "Nom de l'entreprise", class: "form-label" %>
+              <%= f.text_field :company_name, class: "form-control w-50", placeholder: "Entrez le nom de votre entreprise" %>
+            </div>
+            <!-- Submit button for company name update -->
+            <div class="text-end mt-3">
+              <%= f.submit "Mettre à jour", class: "btn btn-primary btn-sm" %>
+            </div>
           <% end %>
+        </div>
+      </div>
 
-          <div class="mb-4">
-            <%= f.label :password, "Nouveau mot de passe (facultatif)", class: "form-label" %>
-            <%= f.password_field :password, autocomplete: "new-password", class: "form-control w-50" %>
-            <% if @minimum_password_length %>
-            <em><%= @minimum_password_length %> caractères minimum</em>
-            <% end %>
-          </div>
-
-          <div class="mb-4">
-            <%= f.label :password_confirmation, "Confirmez le mot de passe", class: "form-label" %>
-            <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control w-50" %>
-          </div>
-
-          <div class="mb-4">
-            <%= f.label :current_password, "Mot de passe actuel", class: "form-label" %>
-            <%= f.password_field :current_password, autocomplete: "current-password", class: "form-control w-50" %>
-          </div>
-
-          <div class="mb-4">
-            <%= f.submit "Mettre à jour", class: "btn btn-success btn-sm" %>
-          </div>
-
+      <!-- Card 2: Email and Password -->
+      <div class="card shadow-sm mb-4">
+        <div class="card-header text-center bg-success text-white">
+          <h4>Email et Mot de Passe</h4>
+        </div>
+        <div class="card-body">
+          <%= form_with(model: resource, as: resource_name, url: registration_path(resource_name), method: :put, local: true, class: "form") do |f| %>
+            <!-- Input field for email -->
+            <div class="form-group mb-3">
+              <%= f.label :email, "Adresse e-mail", class: "form-label" %>
+              <%= f.email_field :email, class: "form-control w-50", placeholder: "Entrez votre email" %>
+            </div>
+            
+            <!-- Input field for new password -->
+            <div class="form-group mb-3">
+              <%= f.label :password, "Nouveau mot de passe (facultatif)", class: "form-label" %>
+              <%= f.password_field :password, class: "form-control w-50", placeholder: "Nouveau mot de passe" %>
+            </div>
+            
+            <!-- Input field for password confirmation -->
+            <div class="form-group mb-3">
+              <%= f.label :password_confirmation, "Confirmez le mot de passe", class: "form-label" %>
+              <%= f.password_field :password_confirmation, class: "form-control w-50", placeholder: "Confirmez votre mot de passe" %>
+            </div>
+            
+            <!-- Input field for current password -->
+            <div class="form-group mb-3">
+              <%= f.label :current_password, "Mot de passe actuel", class: "form-label" %>
+              <%= f.password_field :current_password, class: "form-control w-50", placeholder: "Entrez votre mot de passe actuel" %>
+            </div>
+            
+            <!-- Submit button for email and password update -->
+            <div class="text-end mt-3">
+              <%= f.submit "Mettre à jour", class: "btn btn-success btn-sm" %>
+            </div>
           <% end %>
+        </div>
+      </div>
 
-          <hr class="my-4">
-
-          <div>
-            <%= form_with url: registration_path(resource_name), method: :delete do |f| %>
-              <div class="mb-4">
-                <%= f.label :current_password, "Mot de passe actuel", class: "form-label" %>
-                <%= f.password_field :current_password, class: "form-control w-50" %>
-              </div>
+     <!-- Card 3: Account Deletion (Ensuring Yellow/Orange Color) -->
+      <div class="card shadow-sm mb-4 ">
+        <div class="card-header text-center bg-warning text-dark">
+          <h4>Suppression de compte</h4>
+        </div>
+        <div class="card-body">
+          <%= form_with url: registration_path(resource_name), method: :delete do |f| %>
+            <!-- Input field for current password required to delete the account -->
+            <div class="form-group mb-3">
+              <%= f.label :current_password, "Mot de passe actuel", class: "form-label" %>
+              <%= f.password_field :current_password, class: "form-control w-50", placeholder: "Entrez votre mot de passe actuel" %>
+            </div>
+            <!-- Submit button for account deletion -->
+            <div class="text-end mt-3">
               <%= f.submit "Supprimer mon compte", 
                           data: { confirm: "Êtes-vous sûr ? Cette action est irréversible." }, 
                           class: "btn btn-warning btn-sm" %>
-            <% end %>
-          </div>
-
-          <div class="mt-3">
-            <%= link_to "Retour", :back, class: "btn btn-primary btn-sm" %>
-          </div>
+            </div>
+          <% end %>
         </div>
       </div>
     </div>

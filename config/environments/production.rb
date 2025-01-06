@@ -114,7 +114,8 @@ Rails.application.configure do
     enable_starttls_auto: true
   }
 
-  Rails.application.routes.default_url_options[:host] = 'zero-waste-app-3239108559bd.herokuapp.com'
+  
+  config.action_mailer.default_url_options = { host: 'zero-waste-app-3239108559bd.herokuapp.com', protocol: 'https' }
 
   
 
